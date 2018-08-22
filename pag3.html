@@ -1,0 +1,77 @@
+<!doctype html> <!-- This line tells the browser we are using HTML5 validation -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Aprendendo JavaScript</title>
+  <meta name="description" content="Resumo do slide e mexendo com templates">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <ul class="menu">
+        <li><a href="pag1.html"><b>Tags HTML</b></a></li>
+        <li><a class="active"><b>CSS</b></a></li>
+        <li><a href="pag3.html"><b>JavaScript</b></a></li>
+    </ul>
+    <br>
+    <h1>JavaScript</h1>
+    <p>
+        O JavaScript é a linguagem responsável por conceder ação à uma aplicação web. Enquanto o HTML determina quais elementos serão dispostos e a ordem em que serão dispostos e o CSS determina suas propriedades. O JavaScript interage com esses elementos concendendo maior interação através de funções, variáveis e logical statements assim como qualquer linguagem estruturada.
+    </p>
+
+    <h2>A tag &ltscript&gt</h2>
+    <p>
+        Em HTML, scripts devem ser inseridos ao redor da tag <i>script</i> (necessita fechamento).
+    </p>
+
+    <h2>Funções em JavaScript</h2>
+    <p>
+        Uma função em JS é um bloco de código que pode ser invocado no HTML, por exemplo, após um clique em um botão.
+    </p>
+
+    <h2>Scripts inline ou externos</h2>
+    <p>
+        Um script pode ser feito de maneira inline dentro da tag script ou invocado de um arquivo <b>.js</b>, sendo este mais vantajoso visto que separa do HTML o código em JS fazendo com que ambos fiquem mais limpos e fáceis de ler. Além disso com o arquivo externo fica mais fácil chamar a mesma função várias vezes e em páginas diferentes.
+        Exemplo de inclusão de um script:
+        <code>
+            <pre>
+            &ltscript src="meuScript.js"&gt&lt/script&gt
+            </pre>
+        </code>
+        Caso necessário, incluir o caminho até o arquivo JS.
+    </p>
+    <h2>Exemplo de script onmouseover</h2>
+    <img id="memejs" onmouseover="changeMeme(this)" onmouseout="changeBack(this)" src="ibagens/resident.png"/>
+    <figcaption>(Passe o mouse na imagem)</figcaption>
+    <p>
+        Através do parâmetro <b>onmouseover</b> da tag &ltimg&gt e <b>onmouseout</b>, foram chamadas duas funções JS que alteram o elemento de id <b>memejs</b>, seguindo o seguinte código:
+    </p>
+    <code>
+        &ltimg id="memejs" onmouseover="changeMeme(this)" onmouseout="changeBack(this)" src="ibagens/resident.png"/&gt
+    </code>
+    <br>
+    <br>
+    E scripts:
+    <code>
+        <pre>
+            function changeMeme() {
+                document.getElementById("memejs").src = "ibagens/pogchamp.png";
+            }
+
+            function changeBack() {
+                document.getElementById("memejs").src = "ibagens/resident.png";
+            }
+        </pre>
+    </code>
+    <p>
+        O JavaScript é capaz de alterar, exibir ou ocultar o CSS.
+        Além disso, existem 3 maneiras de exibir dados via JS:
+        <ul>
+            <li>Escrevendo em um HTML: <b>innerHTML</b></li>
+            <li>Escrevendo em uma caixa de alerta: <b>window.alert()</b></li>
+            <li>Escrevendo no console do navegador: <b>console.log()</b></li>
+        </ul>
+    </p>
+    <script src="scriptado.js"></script>
+</body>
+</html>

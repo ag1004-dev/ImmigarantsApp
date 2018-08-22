@@ -44,6 +44,12 @@ img {
     max-width: 95%;
 }
 
+#memejs {
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    max-width: 10%;
+    display: inline;
+}
+
 code {
     font-family: monospace;
 }
