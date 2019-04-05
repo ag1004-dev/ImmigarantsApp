@@ -1,0 +1,126 @@
+<!doctype html> <!-- This line tells the browser we are using HTML5 validation -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Aprendendo CSS</title>
+  <meta name="description" content="Resumo do slide e mexendo com templates">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+	<div class="sidenav">
+		<img class="dcomp" src="ibagens/dcomp.png">
+		<p>
+			Web - 2019/01
+		</p>
+			<div id="links">
+				<p id="sidetext">
+					<a href="http://github.com/Vinality"><img class="logo" src="ibagens/git.png">Vinality</a>
+				</p>
+			</div>
+	</div>
+
+
+	<div class="main">
+		<ul class="menu">
+			<li><a href="pag1.html"><b>Tags HTML</b></a></li>
+			<li><a class="active"><b>CSS</b></a></li>
+			<li><a href="pag3.html"><b>JavaScript</b></a></li>
+		</ul>
+		<br>
+		<h1>O que é o CSS</h1>
+		<p>
+			O CSS, ou <em>Cascade Style Sheets</em>, é uma linguagem de descrição de estilos que define o layout de documentos HTML. O CSS controla a   formatação e texto e posicionamento dos elementos através de parâmetros. Enquanto o HTML define o conteúdo da página, o CSS formata e estiliza o conteúdo.
+		</p>
+
+		<h2>A sintaxe do CSS</h2>
+		<p>
+			Em CSS, a sintaxe é muito simples e consiste em: <br>
+			<code>
+				<pre>
+					seletor {
+					  propriedade: valor;
+					}
+				</pre>
+			</code>
+		</p>
+
+		<h2>O seletor</h2>
+		<p>
+			O seletor representa uma estrutura que determina quais elementos dentro de um grupo de elementos será formatado. É possível encadear seletores de forma a especificar o elemento desejado.
+		</p>
+
+		<p>
+			<code>
+				<pre>
+					.menu p a {
+					  font-size: 16px;
+					}
+				</pre>
+			</code>
+
+			O código acima seleciona o link <b><em>a</em></b>, contido no parágrafo <b><em>p</em></b>, dentro da classe <b><em>menu</em></b> e altera o tamanho da fonte.
+		</p>
+
+		<h3>Sintaxe simples</h3>
+		<p>
+			Em resumo, a sintaxe do CSS é composta por uma descrição de propriedades separados por ":" e finalizado com ";"
+		</p>
+
+		<h3>As três implementações</h3>
+
+		<p>
+			Existem 3 maneiras de se implementar o CSS em uma página HTML:
+		</p>
+
+		<ul>
+			<li>Inline</li>
+			<li>Incorporada</li>
+			<li>Importada</li>
+		</ul>
+
+		<p>
+			<b>Inline:</b> atributo style declarado no próprio elemento HTML.
+			<br>
+			<code>
+				<pre>
+					&ltp style="color: #000; background-color: #111;"&gt
+				</pre>
+			</code>
+		</p>
+
+		<p>
+			<b>Incorporada:</b> Tag style e uso de seletores dentro do arquivo HTML:
+			<br>
+			<code>
+				<pre>
+					&ltstyle type="estilocss"&gt
+					h1 {
+					  color: #000;
+					}
+
+					p {
+				  	  font-family: monospace;
+					  color: #111;
+					}
+					&lt/style&gt
+				</pre>
+			</code>
+		</p>
+
+		<p>
+			<b>Importada:</b> Implementação do CSS em arquivo externo, que é, então, importado ao HTML correspondente.
+				Essa importação ocorre dentro do &lthead&gt, da seguinte forma:
+			<code>
+				<pre>
+					&ltlink rel="stylesheet" href="main.css"&gt
+				</pre>
+			</code>
+		</p>
+
+		<div class="button">
+				<a href="pag3.html">Próximo Tópico: JavaScript</a>
+		</div>
+	</div>
+</body>
+</html>
