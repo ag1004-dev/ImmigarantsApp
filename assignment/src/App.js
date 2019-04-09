@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Home></Home>
+        <Home/>
       </Fragment>
     );
   }
