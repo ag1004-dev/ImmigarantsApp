@@ -3,11 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "bootstrap": "^4.3.1",
+    "bootstrap-styled": "^2.4.13",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-pose": "^4.0.8",
+    "react-scripts": "2.1.8",
+    "styled-components": "^4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
