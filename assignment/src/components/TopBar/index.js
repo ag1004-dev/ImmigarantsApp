@@ -9,7 +9,6 @@ const TopBar = () => (
       defaultActiveKey="/home"
       fixed="top"
       id="mainNavbar"
-      bg="light"
       variant="light"
     >
       <Container>
