@@ -3,7 +3,7 @@ import { Jumbotron } from "react-bootstrap";
 
 export const StyledJumbotron = styled(Jumbotron)`
   background-color: transparent !important;
-  margin-top: 200px;
+  margin-top: 250px;
   height: 100vh;
 `;
 

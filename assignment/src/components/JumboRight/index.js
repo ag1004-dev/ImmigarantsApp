@@ -1,15 +1,15 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
-import { Img, Title } from "./styles";
+import { Img, Title, Text } from "./styles";
 
 const JumboRight = props => (
   <Container> 
     <Row>
       <Col md={6} className="align-self-center">
         <Title>{props.title}</Title>
-        <p>{props.text}</p>
+        <Text>{props.text}</Text>
       </Col>
-      <Col md={6}>
+      <Col md={6} className="align-self-center">
         <Img src={props.source} alt="imagem2" />
       </Col>
     </Row>
