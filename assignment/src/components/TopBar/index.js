@@ -39,11 +39,11 @@ class TopBar extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="justify-content-end">
               <Navitem>
-                <Link to='/'>Home</Link>
+                <Link to='/search' className="">Buscador</Link>
               </Navitem>
-              <Navitem>
-                <Link to='/search'>Buscador</Link>
-              </Navitem>
+              {/* <Navitem>
+                <Link to='#Sobre' className="ml-2">Sobre</Link>
+              </Navitem> */}
             </Nav>
           </Container>
         </Navbar>

@@ -12,7 +12,6 @@ export const Navbrand = styled(Navbar.Brand)`
 
 export const Navitem = styled(NavItem)`
   font-size: 25px;
-  padding: 5px;
 `;
 
 export const FaIcon = styled(FontAwesomeIcon)`

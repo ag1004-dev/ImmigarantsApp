@@ -8,7 +8,7 @@ class Banner extends Component {
     return (
       <Container className="mt-5 text-center justify-content-center">
         <StyledJumbotron>
-          <h1>Bem vindo ao Immigrant Song</h1>
+          <h1 className="align-self-center">Bem vindo ao Immigrant Song</h1>
           <p className="mt-3">
             Um simples site onde você pode encontrar todas as informações
             necessárias sobre um estrangeiro no país.
