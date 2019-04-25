@@ -1,45 +1,49 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
-import { Header, Navbrand, FaIcon } from "./styles";
-import './styles.css'
-
+import { Header, Navbrand, FaIcon, Navitem } from "./styles";
+import { Link } from "react-router-dom";
+import "./styles.css";
 
 class TopBar extends Component {
   state = {
-    isTop: true,
+    isTop: true
   };
 
   componentDidMount() {
-    document.addEventListener('scroll', () => {
+    document.addEventListener("scroll", () => {
       const isTop = window.scrollY < 100;
       if (isTop !== this.state.isTop) {
-        this.setState({ isTop })
+        this.setState({ isTop });
       }
     });
   }
-  
-  render(){
-    return(
+
+  render() {
+    return (
       <Header>
         <Navbar
           defaultActiveKey="/home"
           fixed="top"
           id="mainNavbar"
           variant="light"
-          className={this.state.isTop ? ' ' : 'bg-light'}
+          className={this.state.isTop ? " " : "bg-light"}
         >
           <Container>
-            <Navbrand href="/home">
-              <FaIcon icon={faAddressCard} />
-              Immigrant Song
-            </Navbrand>
+            <Link to="/">
+              <Navbrand>
+                <FaIcon icon={faAddressCard} />
+                Immigrant Song
+              </Navbrand>
+            </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="justify-content-end">
-              <Nav.Link href="/home" className="active">
-                Home
-              </Nav.Link>
-              <Nav.Link href="#link">Buscador</Nav.Link>
+              <Navitem>
+                <Link to='/'>Home</Link>
+              </Navitem>
+              <Navitem>
+                <Link to='/search'>Buscador</Link>
+              </Navitem>
             </Nav>
           </Container>
         </Navbar>

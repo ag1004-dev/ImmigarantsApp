@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import TopBar from "../TopBar";
-import JumboLeft from "../JumboLeft";
-import JumboRight from "../JumboRight";
-import Banner from "../Banner";
+import TopBar from "../../components/TopBar";
+import JumboLeft from "../../components/JumboLeft";
+import JumboRight from "../../components/JumboRight";
+import Banner from "../../components/Banner";
 import planeImg from "../../images/plane.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 
