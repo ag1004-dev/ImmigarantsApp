@@ -27,7 +27,8 @@ class TopBar extends Component {
           fixed="top"
           id="mainNavbar"
           variant="light"
-          className={this.state.isTop ? " " : "bg-light"}
+          // className={this.state.isTop ? " " : "bg-light"}
+          className="bg-light mb-5"
         >
           <Container>
             <Link to="/">

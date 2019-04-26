@@ -18,6 +18,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
+import { InputGroup, FormControl } from "react-bootstrap";
 
 let counter = 0;
 function createData(name, passport, pais, carbs, protein) {
@@ -61,7 +62,7 @@ const rows = [
   { id: "passport", numeric: true, disablePadding: false, label: "Passaporte" },
   { id: "pais", numeric: true, disablePadding: false, label: "País" },
   { id: "date", numeric: true, disablePadding: false, label: "Data de Entrada" },
-  { id: "protein", numeric: true, disablePadding: false, label: "Protein (g)" }
+  { id: "protein", numeric: true, disablePadding: false, label: "Data de Saída" }
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -80,6 +81,17 @@ class EnhancedTableHead extends React.Component {
 
     return (
       <TableHead>
+        <InputGroup>
+          <InputGroup.Prepend>
+            <InputGroup.Text id="inputGroup-sizing-default">
+              Buscar
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+          />
+        </InputGroup>
         <TableRow>
           <TableCell padding="checkbox">
             <Checkbox
@@ -220,19 +232,97 @@ class EnhancedTable extends React.Component {
     orderBy: "passport",
     selected: [],
     data: [
-      createData("Fulano", 305, 3.7, 67, 4.3),
-      createData("Donut", 452, 25.0, 51, 4.9),
-      createData("Eclair", 262, 16.0, 24, 6.0),
-      createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-      createData("Gingerbread", 356, 16.0, 49, 3.9),
-      createData("Honeycomb", 408, 3.2, 87, 6.5),
-      createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-      createData("Jelly Bean", 375, 0.0, 94, 0.0),
-      createData("KitKat", 518, 26.0, 65, 7.0),
-      createData("Lollipop", 392, 0.2, 98, 0.0),
-      createData("Marshmallow", 318, 0, 81, 2.0),
-      createData("Nougat", 360, 19.0, 9, 37.0),
-      createData("Oreo", 437, 18.0, 63, 4.0)
+      createData(
+        "John Wayne",
+        "AA473829",
+        "Estados Unidos",
+        "27/03/2012",
+        "03/12/2012"
+      ),
+      createData(
+        "Kanye West",
+        "AB123829",
+        "Canada",
+        "03/03/2014",
+        "29/12/2015"
+      ),
+      createData(
+        "Eclair Johnson",
+        "CC473123",
+        "Irlanda",
+        "02/10/2016",
+        "03/12/2018"
+      ),
+      createData(
+        "Mohamed Ali",
+        "DF474899",
+        "Israel",
+        "27/03/2012",
+        "03/12/2012"
+      ),
+      createData(
+        "Giovanni Gonzalez",
+        "EE159357",
+        "Itália",
+        "11/01/2010",
+        "03/01/2019"
+      ),
+      createData(
+        "Drake Brown",
+        "DD2583699",
+        "Inglaterra",
+        "21/03/2012",
+        "03/12/2012"
+      ),
+      createData(
+        "Lucas Malone",
+        "AA473829",
+        "Estados Unidos",
+        "27/03/2012",
+        "03/12/2012"
+      ),
+      createData(
+        "Trevor Bean",
+        "AA473829",
+        "Estados Unidos",
+        "27/03/2012",
+        "03/12/2012"
+      ),
+      createData(
+        "Merlin Abdala",
+        "AA473829",
+        "Estados Unidos",
+        "27/03/2012",
+        "03/12/2012"
+      ),
+      createData(
+        "Coulen Johnes",
+        "AA473829",
+        "Estados Unidos",
+        "27/03/2012",
+        "03/12/2012"
+      ),
+      createData(
+        "Natham Merlin",
+        "AA473829",
+        "Estados Unidos",
+        "27/03/2012",
+        "03/12/2012"
+      ),
+      createData(
+        "Jackie Anderson",
+        "AA473829",
+        "Estados Unidos",
+        "27/03/2012",
+        "03/12/2012"
+      ),
+      createData(
+        "Kevin White",
+        "AA473829",
+        "Estados Unidos",
+        "27/03/2012",
+        "03/12/2012"
+      )
     ],
     page: 0,
     rowsPerPage: 15
