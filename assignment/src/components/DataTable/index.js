@@ -18,12 +18,11 @@ import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
-import { InputGroup, FormControl } from "react-bootstrap";
 
 let counter = 0;
-function createData(name, passport, pais, carbs, protein) {
+function createData(name, passport, pais, dataDeEntrada, dataDeSaida) {
   counter += 1;
-  return { id: counter, name, passport, pais, carbs, protein };
+  return { id: counter, name, passport, pais, dataDeEntrada, dataDeSaida };
 }
 
 function desc(a, b, orderBy) {
@@ -59,10 +58,10 @@ const rows = [
     disablePadding: true,
     label: "Nome Completo"
   },
-  { id: "passport", numeric: true, disablePadding: false, label: "Passaporte" },
+  { id: "passaporte", numeric: true, disablePadding: false, label: "Passaporte" },
   { id: "pais", numeric: true, disablePadding: false, label: "País" },
-  { id: "date", numeric: true, disablePadding: false, label: "Data de Entrada" },
-  { id: "protein", numeric: true, disablePadding: false, label: "Data de Saída" }
+  { id: "dataDeEntrada", numeric: true, disablePadding: false, label: "Data de Entrada" },
+  { id: "dataDeSaida", numeric: true, disablePadding: false, label: "Data de Saída" }
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -81,31 +80,20 @@ class EnhancedTableHead extends React.Component {
 
     return (
       <TableHead>
-        <InputGroup>
-          <InputGroup.Prepend>
-            <InputGroup.Text id="inputGroup-sizing-default">
-              Buscar
-            </InputGroup.Text>
-          </InputGroup.Prepend>
-          <FormControl
-            aria-label="Default"
-            aria-describedby="inputGroup-sizing-default"
-          />
-        </InputGroup>
         <TableRow>
-          <TableCell padding="checkbox">
+          {/* <TableCell padding="checkbox">
             <Checkbox
               indeterminate={numSelected > 0 && numSelected < rowCount}
               checked={numSelected === rowCount}
               onChange={onSelectAllClick}
             />
-          </TableCell>
+          </TableCell> */}
           {rows.map(
             row => (
               <TableCell
                 key={row.id}
                 align={row.numeric ? "right" : "left"}
-                padding={row.disablePadding ? "none" : "default"}
+                padding="default"
                 sortDirection={orderBy === row.id ? order : false}
               >
                 <Tooltip
@@ -182,7 +170,7 @@ let EnhancedTableToolbar = props => {
           </Typography>
         ) : (
           <Typography variant="h6" id="tableTitle">
-            Imigrantes
+            Lista de Estrangeiros no país
           </Typography>
         )}
       </div>
@@ -412,16 +400,16 @@ class EnhancedTable extends React.Component {
                       key={n.id}
                       selected={isSelected}
                     >
-                      <TableCell padding="checkbox">
+                      {/* <TableCell padding="checkbox">
                         <Checkbox checked={isSelected} />
-                      </TableCell>
-                      <TableCell component="th" scope="row" padding="none">
+                      </TableCell> */}
+                      <TableCell component="th" scope="row" padding="default">
                         {n.name}
                       </TableCell>
                       <TableCell align="right">{n.passport}</TableCell>
                       <TableCell align="right">{n.pais}</TableCell>
-                      <TableCell align="right">{n.carbs}</TableCell>
-                      <TableCell align="right">{n.protein}</TableCell>
+                      <TableCell align="right">{n.dataDeEntrada}</TableCell>
+                      <TableCell align="right">{n.dataDeSaida}</TableCell>
                     </TableRow>
                   );
                 })}
