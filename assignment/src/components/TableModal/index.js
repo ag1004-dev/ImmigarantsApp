@@ -28,7 +28,7 @@ class MyVerticallyCenteredModal extends React.Component {
   }
 }
 
-class App extends React.Component {
+class TableModal extends React.Component {
   constructor(...args) {
     super(...args);
 
@@ -56,4 +56,4 @@ class App extends React.Component {
   }
 }
 
-render(<App />);
+render(<TableModal />);
