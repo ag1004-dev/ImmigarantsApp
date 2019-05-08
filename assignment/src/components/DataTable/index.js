@@ -58,8 +58,8 @@ const rows = [
     disablePadding: true,
     label: "Nome Completo"
   },
-  { id: "passaporte", numeric: true, disablePadding: false, label: "Passaporte" },
-  { id: "pais", numeric: true, disablePadding: false, label: "País" },
+  { id: "idade", numeric: true, disablePadding: false, label: "Idade" },
+  { id: "pais", numeric: true, disablePadding: false, label: "País de Origem" },
   { id: "dataDeEntrada", numeric: true, disablePadding: false, label: "Data de Entrada" },
   { id: "dataDeSaida", numeric: true, disablePadding: false, label: "Data de Saída" }
 ];
@@ -170,7 +170,7 @@ let EnhancedTableToolbar = props => {
           </Typography>
         ) : (
           <Typography variant="h6" id="tableTitle">
-            Lista de Estrangeiros no país
+            {/* Lista de Estrangeiros no país */}
           </Typography>
         )}
       </div>
