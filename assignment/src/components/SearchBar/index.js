@@ -4,7 +4,7 @@ import { InputGroup, FormControl, Container, Button } from "react-bootstrap";
 
 const SearchBar = props => (
     <Container>
-        <InputGroup className="mt-5 pt-5">
+        {/* <InputGroup className="mt-5 pt-5">
             <FormControl
                 placeholder="Nome e Sobrenome"
                 aria-label="Nome e Sobrenome"
@@ -13,7 +13,7 @@ const SearchBar = props => (
             <InputGroup.Append>
                 <Button variant="outline-primary">Buscar</Button>
             </InputGroup.Append>
-        </InputGroup>
+        </InputGroup> */}
     </Container>
 );
 
