@@ -4,7 +4,7 @@ import { InputGroup, FormControl, Container, Button } from "react-bootstrap";
 
 const SearchBar = props => (
     <Container>
-        <InputGroup className="mb-3">
+        <InputGroup className="mt-5 pt-5">
             <FormControl
                 placeholder="Nome e Sobrenome"
                 aria-label="Nome e Sobrenome"

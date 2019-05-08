@@ -3,6 +3,7 @@ import TopBar from "../../components/TopBar";
 import EnhancedTable from "../../components/DataTable";
 import { Container, Table } from './styles';
 import SearchBar from "../../components/SearchBar"
+import AdvancedSearch from "../../components/AdvancedSearch"
 
 
 export default class Search extends Component {
@@ -10,7 +11,10 @@ export default class Search extends Component {
     return (
       <Container>
         <TopBar />
-        <SearchBar></SearchBar>
+        <Container>
+         <SearchBar></SearchBar>
+         <AdvancedSearch></AdvancedSearch>
+        </Container>
         <Table />
       </Container>
     );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { StyledJumbotron } from "./styles";
 import { Link } from "react-router-dom";
 import { Button, Container } from "react-bootstrap";
+// import TableModal from "../TableModal";
 
 class Banner extends Component {
   render() {
@@ -21,6 +22,7 @@ class Banner extends Component {
             </Link>
           </p>
         </StyledJumbotron>
+      {/* <TableModal></TableModal> */}
       </Container>
     );
   }

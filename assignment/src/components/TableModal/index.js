@@ -1,4 +1,7 @@
-class MyVerticallyCenteredModal extends React.Component {
+import React, { Component } from "react";
+import { Modal, Button, ButtonToolbar } from "react-bootstrap";
+
+class MyVerticallyCenteredModal extends Component {
   render() {
     return (
       <Modal
@@ -28,7 +31,7 @@ class MyVerticallyCenteredModal extends React.Component {
   }
 }
 
-class TableModal extends React.Component {
+class TableModal extends Component {
   constructor(...args) {
     super(...args);
 
@@ -57,3 +60,5 @@ class TableModal extends React.Component {
 }
 
 render(<TableModal />);
+
+export default TableModal;

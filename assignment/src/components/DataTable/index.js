@@ -20,9 +20,9 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
 
 let counter = 0;
-function createData(name, passport, pais, dataDeEntrada, dataDeSaida) {
+function createData(name, idade, pais, dataDeEntrada, dataDeSaida) {
   counter += 1;
-  return { id: counter, name, passport, pais, dataDeEntrada, dataDeSaida };
+  return { id: counter, name, idade, pais, dataDeEntrada, dataDeSaida };
 }
 
 function desc(a, b, orderBy) {
@@ -144,7 +144,7 @@ const toolbarStyles = theme => ({
           backgroundColor: theme.palette.secondary.dark
         },
   spacer: {
-    flex: "1 1 100%"
+    flex: "1 1 80%"
   },
   actions: {
     color: theme.palette.text.secondary
@@ -217,7 +217,7 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
   state = {
     order: "asc",
-    orderBy: "passport",
+    orderBy: "idade",
     selected: [],
     data: [
       createData(
@@ -406,7 +406,7 @@ class EnhancedTable extends React.Component {
                       <TableCell component="th" scope="row" padding="default">
                         {n.name}
                       </TableCell>
-                      <TableCell align="right">{n.passport}</TableCell>
+                      <TableCell align="right">{n.idade}</TableCell>
                       <TableCell align="right">{n.pais}</TableCell>
                       <TableCell align="right">{n.dataDeEntrada}</TableCell>
                       <TableCell align="right">{n.dataDeSaida}</TableCell>
