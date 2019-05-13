@@ -17,7 +17,7 @@ public class ImmigrantController {
     private ImmigrantRepository immigrantRepository;
 
     @GetMapping("/immigrants")
-    public Page<Immigrant> getQuestions(Pageable pageable) {
+    public Page<Immigrant> getImmigrants(Pageable pageable) {
         return immigrantRepository.findAll(pageable);
     }
 
@@ -40,11 +40,11 @@ public class ImmigrantController {
 
 
     @DeleteMapping("/immigrants/{immigrantId}")
-    public ResponseEntity<?> deleteQuestion(@PathVariable Long immigrantId) {
+    public ResponseEntity<?> deleteImmigrant(@PathVariable Long immigrantId) {
         return immigrantRepository.findById(immigrantId)
                 .map(immigrant -> {
                     immigrantRepository.delete(immigrant);
                     return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Question not found with id " + immigrantId));
+                }).orElseThrow(() -> new ResourceNotFoundException("Immigrant not found with id " + immigrantId));
     }
 }
