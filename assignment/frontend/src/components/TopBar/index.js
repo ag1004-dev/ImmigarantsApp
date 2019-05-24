@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
+import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
 import { Header, Navbrand, FaIcon, Navitem } from "./styles";
 import { Link } from "react-router-dom";
 import "./styles.css";
@@ -33,15 +33,15 @@ class TopBar extends Component {
           <Container>
             <Link to="/">
               <Navbrand>
-                <FaIcon icon={faAddressCard} />
+                <FaIcon icon={faGlobeAmericas} />
                 Immigrant Song
               </Navbrand>
             </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="justify-content-end">
-              <Navitem>
+              {/* <Navitem>
                 <Link to='/search' className="">Buscador</Link>
-              </Navitem>
+              </Navitem> */}
               {/* <Navitem>
                 <Link to='#Sobre' className="ml-2">Sobre</Link>
               </Navitem> */}
