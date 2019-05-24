@@ -1,3 +1,5 @@
+import React from "react";
+import { Container, Button, Row, Col, Modal } from "react-bootstrap";
 import "./styles.css";
 
 class TableModal extends React.Component {
