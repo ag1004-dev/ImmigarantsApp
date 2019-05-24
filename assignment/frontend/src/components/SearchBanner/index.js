@@ -24,19 +24,19 @@ class Banner extends Component {
         <StyledJumbotron>
           <h1 className="align-self-center">Busque aqui informações sobre estrangeiros.</h1>
         </StyledJumbotron>
-            <Button
+        <AdvancedSearch></AdvancedSearch>
+            {/* <Button
                 onClick={() => this.setState({ open: !open })}
                 aria-controls="example-collapse-text"
                 aria-expanded={open}
             >
             <FaIcon icon={faSearch} />
-        </Button>
+        </Button> */}
 
-        <Collapse in={this.state.open}>
+        {/* <Collapse in={this.state.open}>
             <div id="example-collapse-text">
-                    <AdvancedSearch></AdvancedSearch>
         </div>
-        </Collapse>
+        </Collapse> */}
     </Container>
     );
   }
