@@ -18,6 +18,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
+import {TableModal} from "../TableModal";
 
 let counter = 0;
 function createData(name, idade, pais, dataDeEntrada, dataDeSaida) {
