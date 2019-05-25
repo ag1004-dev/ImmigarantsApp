@@ -18,6 +18,11 @@ class AdvancedSearch extends Component {
     searchInput: ""
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.addImmigrantRequest(this.state.searchInput);
+  };
+
   render() {
     return (
       <Container className="mt-5 pt-5">
@@ -48,7 +53,7 @@ class AdvancedSearch extends Component {
                       }
                     />
                     <InputGroup.Append>
-                      <Button variant="outline-primary" type="submit">
+                      <Button variant="outline-primary" type="submit" onClick={e => this.handleSubmit(e)}>
                         Buscar
                       </Button>
                     </InputGroup.Append>
@@ -72,7 +77,9 @@ class AdvancedSearch extends Component {
                       aria-describedby="basic-addon2"
                     />
                     <InputGroup.Append>
-                      <Button variant="outline-primary">Buscar</Button>
+                      <Button variant="outline-primary" type="submit">
+                        Buscar
+                      </Button>
                     </InputGroup.Append>
                   </InputGroup>
                 </Tab.Pane>

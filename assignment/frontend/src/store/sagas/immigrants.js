@@ -4,7 +4,7 @@ import { Creators as ImmigrantActions } from "../ducks/immigrants";
 
 export function* addImmigrant(action) {
   try {
-    const { data } = yield call(api.get, `/immigrants/${action.payload.repo}`);
+    const { data } = yield call(api.get, `/immigrants/${action.payload.imm}`);
 
     const immData = {
       id: data.content.id,

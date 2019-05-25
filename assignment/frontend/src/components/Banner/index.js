@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Button, Container } from "react-bootstrap";
 import bannerImage from "../../images/Travel-PNG-Image.png"
 import {Img} from "./styles"
-// import TableModal from "../TableModal";
 
 class Banner extends Component {
   render() {
