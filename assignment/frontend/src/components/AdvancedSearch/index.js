@@ -53,7 +53,11 @@ class AdvancedSearch extends Component {
                       }
                     />
                     <InputGroup.Append>
-                      <Button variant="outline-primary" type="submit" onClick={e => this.handleSubmit(e)}>
+                      <Button
+                        variant="outline-primary"
+                        type="submit"
+                        onClick={e => this.handleSubmit(e)}
+                      >
                         Buscar
                       </Button>
                     </InputGroup.Append>
