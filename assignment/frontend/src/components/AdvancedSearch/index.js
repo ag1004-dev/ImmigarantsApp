@@ -38,6 +38,21 @@ class AdvancedSearch extends Component {
                     Pesquise pelo nome e nacionalidade
                   </Nav.Link>
                 </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="third">
+                    Pesquise pelo número do passaporte
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="fourth">
+                    Pesquise pela data de entrada
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="fifth">
+                    Pesquise pela data de saída
+                  </Nav.Link>
+                </Nav.Item>
               </Nav>
             </Col>
             <Col sm={9}>
