@@ -19,6 +19,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
 import {TableModal} from "../TableModal";
+import {StyledTableCell} from "./styles";
+
 
 let counter = 0;
 function createData(name, idade, pais, dataDeEntrada, dataDeSaida) {
@@ -82,16 +84,16 @@ class EnhancedTableHead extends React.Component {
     return (
       <TableHead>
         <TableRow>
-          {/* <TableCell padding="checkbox">
+          {/* <StyledTableCell padding="checkbox">
             <Checkbox
               indeterminate={numSelected > 0 && numSelected < rowCount}
               checked={numSelected === rowCount}
               onChange={onSelectAllClick}
             />
-          </TableCell> */}
+          </StyledTableCell> */}
           {rows.map(
             row => (
-              <TableCell
+              <StyledTableCell
                 key={row.id}
                 align={row.numeric ? "right" : "left"}
                 padding="default"
@@ -110,7 +112,7 @@ class EnhancedTableHead extends React.Component {
                     {row.label}
                   </TableSortLabel>
                 </Tooltip>
-              </TableCell>
+              </StyledTableCell>
             ),
             this
           )}
@@ -401,22 +403,22 @@ class EnhancedTable extends React.Component {
                       key={n.id}
                       selected={isSelected}
                     >
-                      {/* <TableCell padding="checkbox">
+                      {/* <StyledTableCell padding="checkbox">
                         <Checkbox checked={isSelected} />
-                      </TableCell> */}
-                      <TableCell component="th" scope="row" padding="default">
+                      </StyledTableCell> */}
+                      <StyledTableCell component="th" scope="row" padding="default">
                         {n.name}
-                      </TableCell>
-                      <TableCell align="right">{n.idade}</TableCell>
-                      <TableCell align="right">{n.pais}</TableCell>
-                      <TableCell align="right">{n.dataDeEntrada}</TableCell>
-                      <TableCell align="right">{n.dataDeSaida}</TableCell>
+                      </StyledTableCell>
+                      <StyledTableCell align="right">{n.idade}</StyledTableCell>
+                      <StyledTableCell align="right">{n.pais}</StyledTableCell>
+                      <StyledTableCell align="right">{n.dataDeEntrada}</StyledTableCell>
+                      <StyledTableCell align="right">{n.dataDeSaida}</StyledTableCell>
                     </TableRow>
                   );
                 })}
               {emptyRows > 0 && (
                 <TableRow style={{ height: 49 * emptyRows }}>
-                  <TableCell colSpan={6} />
+                  <StyledTableCell colSpan={6} />
                 </TableRow>
               )}
             </TableBody>
