@@ -35,22 +35,22 @@ class AdvancedSearch extends Component {
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="second">
-                    Pesquise pelo nome e nacionalidade
+                    Pelo nome e nacionalidade
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="third">
-                    Pesquise pelo número do passaporte
+                    Pelo número do passaporte
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="fourth">
-                    Pesquise pela data de entrada
+                    Pela data de entrada
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="fifth">
-                    Pesquise pela data de saída
+                    Pela data de saída
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
@@ -58,7 +58,7 @@ class AdvancedSearch extends Component {
             <Col sm={9}>
               <Tab.Content>
                 <Tab.Pane eventKey="first">
-                  <InputGroup className="mb-5">
+                  <InputGroup className="mt-5">
                     <FormControl
                       placeholder="Nome"
                       aria-label="Nome"
@@ -79,7 +79,7 @@ class AdvancedSearch extends Component {
                   </InputGroup>
                 </Tab.Pane>
                 <Tab.Pane eventKey="second">
-                  <InputGroup>
+                  <InputGroup className="mt-5">
                     <FormControl
                       placeholder="Nome"
                       aria-label="Nome"
@@ -97,6 +97,69 @@ class AdvancedSearch extends Component {
                     />
                     <InputGroup.Append>
                       <Button variant="outline-primary" type="submit">
+                        Buscar
+                      </Button>
+                    </InputGroup.Append>
+                  </InputGroup>
+                </Tab.Pane>
+                <Tab.Pane eventKey="third">
+                  <InputGroup className="mt-5">
+                    <FormControl
+                      placeholder="Número do passaporte"
+                      aria-label="Número do passaporte"
+                      aria-describedby="basic-addon2"
+                      onChange={e =>
+                        this.setState({ searchInput: e.target.value })
+                      }
+                    />
+                    <InputGroup.Append>
+                      <Button
+                        variant="outline-primary"
+                        type="submit"
+                        onClick={e => this.handleSubmit(e)}
+                      >
+                        Buscar
+                      </Button>
+                    </InputGroup.Append>
+                  </InputGroup>
+                </Tab.Pane>
+                <Tab.Pane eventKey="fourth">
+                  <InputGroup className="mt-5">
+                    <FormControl
+                      placeholder="Data de entrada no país"
+                      aria-label="Data de entrada no país"
+                      aria-describedby="basic-addon2"
+                      onChange={e =>
+                        this.setState({ searchInput: e.target.value })
+                      }
+                    />
+                    <InputGroup.Append>
+                      <Button
+                        variant="outline-primary"
+                        type="submit"
+                        onClick={e => this.handleSubmit(e)}
+                      >
+                        Buscar
+                      </Button>
+                    </InputGroup.Append>
+                  </InputGroup>
+                </Tab.Pane>
+                <Tab.Pane eventKey="fifth" className="d-flex align-items-center justify-content-center">
+                  <InputGroup className="mt-5">
+                    <FormControl
+                      placeholder="Data de saída do país"
+                      aria-label="Data de saída do país"
+                      aria-describedby="basic-addon2"
+                      onChange={e =>
+                        this.setState({ searchInput: e.target.value })
+                      }
+                    />
+                    <InputGroup.Append>
+                      <Button
+                        variant="outline-primary"
+                        type="submit"
+                        onClick={e => this.handleSubmit(e)}
+                      >
                         Buscar
                       </Button>
                     </InputGroup.Append>
