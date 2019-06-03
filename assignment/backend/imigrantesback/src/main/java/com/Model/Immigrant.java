@@ -19,13 +19,34 @@ public class Immigrant extends AuditModel {
 
     @NotBlank
     @Size(min = 3, max = 100)
-    private String name;
+    private String nome;
 
     @Column(columnDefinition = "text", unique = true)
-    private String passport;
-    
+    private String passaporte;
+
+    @Column(columnDefinition = "text")
+    private String pais;
+
+    @Column(columnDefinition = "text")
+    private String genero;
+
+    @Column(columnDefinition = "text")
+    private String nomepai;
+
+    @Column(columnDefinition = "text")
+    private String nomemae;
+
+    @Column(columnDefinition = "text")
+    private String tipo;
+
     @Column(columnDefinition = "date")
-    private Date data;
+    private Date datanascimento;
+
+    @Column(columnDefinition = "date")
+    private Date dataentrada;
+
+    @Column(columnDefinition = "date")
+    private Date datasaida;
 
 	public Long getId() {
 		return id;
@@ -36,26 +57,82 @@ public class Immigrant extends AuditModel {
 	}
 
 	public String getName() {
-		return name;
+		return nome;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.nome = nome;
 	}
 
 	public String getPassport() {
-		return passport;
+		return passaporte;
 	}
 
-	public void setPassport(String passport) {
-		this.passport = passport;
+	public void setPassport(String passaporte) {
+		this.passaporte = passaporte;
 	}
 
-	public Date getData() {
-		return data;
+	public Date getDataNascimento() {
+		return datanascimento;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setDataNascimento(Date data) {
+		this.datanascimento = data;
 	}
+
+  public Date getDataEntrada() {
+    return dataentrada;
+  }
+
+  public void setDataEntrada(Date data) {
+    this.dataentrada = data;
+  }
+
+  public Date getDataSaida() {
+    return datanascimento;
+  }
+
+  public void setDataSaida(Date data) {
+    this.datanascimento = data;
+  }
+
+  public String getGenero() {
+    return genero;
+  }
+
+  public void setGenero(String genero) {
+    this.genero = genero;
+  }
+
+  public String getNomePai() {
+    return nomepai;
+  }
+
+  public void setNomePai(String nomepai) {
+    this.nomepai = nomepai;
+  }
+
+  public String getNomeMae() {
+    return nomemae;
+  }
+
+  public void setNomeMae(String nomemae) {
+    this.nomemae = nomemae;
+  }
+
+  public String getPais() {
+    return pais;
+  }
+
+  public void setPais(String pais) {
+    this.pais = pais;
+  }
+
+  public String getTipo() {
+    return tipo;
+  }
+
+  public void setTipo(String tipo) {
+    this.tipo = tipo;
+  }
 }

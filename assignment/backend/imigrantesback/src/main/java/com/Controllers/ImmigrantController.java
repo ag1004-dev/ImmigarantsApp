@@ -12,9 +12,19 @@ import javax.validation.Valid;
 
 @RestController
 public class ImmigrantController {
-	
+
     @Autowired
     private ImmigrantRepository immigrantRepository;
+
+  /*  @GetMapping("/immigrants")
+    public Page<Immigrant> getImmigrants(Pageable pageable) {
+        return immigrantRepository.findAll(pageable);
+    }
+
+    @GetMapping("/immigrants")
+    public Page<Immigrant> getImmigrants(Pageable pageable) {
+        return immigrantRepository.findAll(pageable);
+    } */
 
     @GetMapping("/immigrants")
     public Page<Immigrant> getImmigrants(Pageable pageable) {
@@ -34,6 +44,14 @@ public class ImmigrantController {
                 .map(immigrant -> {
                     immigrant.setName(immigrantRequest.getName());
                     immigrant.setPassport(immigrantRequest.getPassport());
+										immigrant.setPais(immigrantRequest.getPais());
+                    immigrant.setGenero(immigrantRequest.getGenero());
+										immigrant.setNomePai(immigrantRequest.getNomePai());
+                    immigrant.setNomeMae(immigrantRequest.getNomeMae());
+										immigrant.setDataEntrada(immigrantRequest.getDataEntrada());
+										immigrant.setDataSaida(immigrantRequest.getDataSaida());
+										immigrant.setDataNascimento(immigrantRequest.getDataNascimento());
+
                     return immigrantRepository.save(immigrant);
                 }).orElseThrow(() -> new ResourceNotFoundException("Immigrant not found with id " + immigrantId));
     }
