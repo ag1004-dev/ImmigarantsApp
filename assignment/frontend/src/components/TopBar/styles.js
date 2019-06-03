@@ -7,7 +7,7 @@ export const Header = styled.div`
 `;
 
 export const Navbrand = styled(Navbar.Brand)`
-  font-size: 1.5em;
+  font-size: 50px;
 `;
 
 export const Navitem = styled(NavItem)`
