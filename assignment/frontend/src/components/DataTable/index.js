@@ -1,10 +1,10 @@
 import React from "react";
-import classNames from "classnames";
+// import classNames from "classnames";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
+// import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
@@ -12,20 +12,23 @@ import TableSortLabel from "@material-ui/core/TableSortLabel";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import IconButton from "@material-ui/core/IconButton";
+// import Checkbox from "@material-ui/core/Checkbox";
+// import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
-import DeleteIcon from "@material-ui/icons/Delete";
-import FilterListIcon from "@material-ui/icons/FilterList";
+// import DeleteIcon from "@material-ui/icons/Delete";
+// import FilterListIcon from "@material-ui/icons/FilterList";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
-import {TableModal} from "../TableModal";
-import {StyledTableCell} from "./styles";
+// import {TableModal} from "../TableModal";
+import { StyledTableCell } from "./styles";
 
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { Creators as ImmigrantActions } from "../../store/ducks/immigrants";
 
 let counter = 0;
-function createData(name, idade, pais, dataDeEntrada, dataDeSaida) {
+function createData(name, passaporte, pais, dataEntrada, dataSaida) {
   counter += 1;
-  return { id: counter, name, idade, pais, dataDeEntrada, dataDeSaida };
+  return { id: counter, name, passaporte, pais, dataEntrada, dataSaida };
 }
 
 function desc(a, b, orderBy) {
@@ -61,10 +64,25 @@ const rows = [
     disablePadding: true,
     label: "Nome Completo"
   },
-  { id: "idade", numeric: true, disablePadding: false, label: "Idade" },
+  {
+    id: "passaporte",
+    numeric: true,
+    disablePadding: false,
+    label: "Passaporte"
+  },
   { id: "pais", numeric: true, disablePadding: false, label: "País de Origem" },
-  { id: "dataDeEntrada", numeric: true, disablePadding: false, label: "Data de Entrada" },
-  { id: "dataDeSaida", numeric: true, disablePadding: false, label: "Data de Saída" }
+  {
+    id: "dataEntrada",
+    numeric: true,
+    disablePadding: false,
+    label: "Data de Entrada"
+  },
+  {
+    id: "dataSaida",
+    numeric: true,
+    disablePadding: false,
+    label: "Data de Saída"
+  }
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -73,24 +91,11 @@ class EnhancedTableHead extends React.Component {
   };
 
   render() {
-    const {
-      onSelectAllClick,
-      order,
-      orderBy,
-      numSelected,
-      rowCount
-    } = this.props;
+    const { order, orderBy } = this.props;
 
     return (
       <TableHead>
         <TableRow>
-          {/* <StyledTableCell padding="checkbox">
-            <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={numSelected === rowCount}
-              onChange={onSelectAllClick}
-            />
-          </StyledTableCell> */}
           {rows.map(
             row => (
               <StyledTableCell
@@ -134,7 +139,7 @@ EnhancedTableHead.propTypes = {
 const toolbarStyles = theme => ({
   root: {
     paddingRight: theme.spacing.unit,
-    marginTop: '80px'
+    marginTop: "80px"
   },
   highlight:
     theme.palette.type === "light"
@@ -158,41 +163,16 @@ const toolbarStyles = theme => ({
 });
 
 let EnhancedTableToolbar = props => {
-  const { numSelected, classes } = props;
+  const { classes } = props;
 
   return (
-    <Toolbar
-      className={classNames(classes.root, {
-        [classes.highlight]: numSelected > 0
-      })}
-    >
+    <Toolbar>
       <div className={classes.title}>
-        {numSelected > 0 ? (
-          <Typography color="inherit" variant="subtitle1">
-            {numSelected} selected
-          </Typography>
-        ) : (
-          <Typography variant="h6" id="tableTitle">
-            {/* Lista de Estrangeiros no país */}
-          </Typography>
-        )}
+        <Typography variant="h6" id="tableTitle">
+          {/* Lista de Estrangeiros no país */}
+        </Typography>
       </div>
-      <div className={classes.spacer} />
-      <div className={classes.actions}>
-        {numSelected > 0 ? (
-          <Tooltip title="Delete">
-            <IconButton aria-label="Delete">
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
-        ) : (
-          <Tooltip title="Filter list">
-            <IconButton aria-label="Filter list">
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
-      </div>
+      <div className={classes.actions} />
     </Toolbar>
   );
 };
@@ -220,103 +200,23 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
   state = {
     order: "asc",
-    orderBy: "idade",
+    orderBy: "passaporte",
     selected: [],
-    data: [
-      createData(
-        "John Wayne",
-        "AA473829",
-        "Estados Unidos",
-        "27/03/2012",
-        "03/12/2012"
-      ),
-      createData(
-        "Kanye West",
-        "AB123829",
-        "Canada",
-        "03/03/2014",
-        "29/12/2015"
-      ),
-      createData(
-        "Eclair Johnson",
-        "CC473123",
-        "Irlanda",
-        "02/10/2016",
-        "03/12/2018"
-      ),
-      createData(
-        "Mohamed Ali",
-        "DF474899",
-        "Israel",
-        "27/03/2012",
-        "03/12/2012"
-      ),
-      createData(
-        "Giovanni Gonzalez",
-        "EE159357",
-        "Itália",
-        "11/01/2010",
-        "03/01/2019"
-      ),
-      createData(
-        "Drake Brown",
-        "DD2583699",
-        "Inglaterra",
-        "21/03/2012",
-        "03/12/2012"
-      ),
-      createData(
-        "Lucas Malone",
-        "AA473829",
-        "Estados Unidos",
-        "27/03/2012",
-        "03/12/2012"
-      ),
-      createData(
-        "Trevor Bean",
-        "AA473829",
-        "Estados Unidos",
-        "27/03/2012",
-        "03/12/2012"
-      ),
-      createData(
-        "Merlin Abdala",
-        "AA473829",
-        "Estados Unidos",
-        "27/03/2012",
-        "03/12/2012"
-      ),
-      createData(
-        "Coulen Johnes",
-        "AA473829",
-        "Estados Unidos",
-        "27/03/2012",
-        "03/12/2012"
-      ),
-      createData(
-        "Natham Merlin",
-        "AA473829",
-        "Estados Unidos",
-        "27/03/2012",
-        "03/12/2012"
-      ),
-      createData(
-        "Jackie Anderson",
-        "AA473829",
-        "Estados Unidos",
-        "27/03/2012",
-        "03/12/2012"
-      ),
-      createData(
-        "Kevin White",
-        "AA473829",
-        "Estados Unidos",
-        "27/03/2012",
-        "03/12/2012"
-      )
-    ],
+    data: [],
     page: 0,
     rowsPerPage: 15
+  };
+
+  componentWillReceiveProps = nextProps => {
+    const { data } = nextProps.immigrants;
+    var nextState = [];
+    if (data[0]) {
+      const arr = data[0];
+      arr.forEach(imm => {
+        nextState.push(imm);
+      });
+      this.setState({ data: [...this.state.data, nextState]});
+    }
   };
 
   handleRequestSort = (event, property) => {
@@ -339,24 +239,7 @@ class EnhancedTable extends React.Component {
   };
 
   handleClick = (event, id) => {
-    const { selected } = this.state;
-    const selectedIndex = selected.indexOf(id);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-
-    this.setState({ selected: newSelected });
+    // TODO Implementar!!
   };
 
   handleChangePage = (event, page) => {
@@ -389,7 +272,7 @@ class EnhancedTable extends React.Component {
               rowCount={data.length}
             />
             <TableBody>
-              {stableSort(data, getSorting(order, orderBy))
+              {data[0] && stableSort(data[0], getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(n => {
                   const isSelected = this.isSelected(n.id);
@@ -403,16 +286,23 @@ class EnhancedTable extends React.Component {
                       key={n.id}
                       selected={isSelected}
                     >
-                      {/* <StyledTableCell padding="checkbox">
-                        <Checkbox checked={isSelected} />
-                      </StyledTableCell> */}
-                      <StyledTableCell component="th" scope="row" padding="default">
-                        {n.name}
+                      <StyledTableCell
+                        component="th"
+                        scope="row"
+                        padding="default"
+                      >
+                        {n.nome}
                       </StyledTableCell>
-                      <StyledTableCell align="right">{n.idade}</StyledTableCell>
+                      <StyledTableCell align="right">
+                        {n.passaporte}
+                      </StyledTableCell>
                       <StyledTableCell align="right">{n.pais}</StyledTableCell>
-                      <StyledTableCell align="right">{n.dataDeEntrada}</StyledTableCell>
-                      <StyledTableCell align="right">{n.dataDeSaida}</StyledTableCell>
+                      <StyledTableCell align="right">
+                        {n.dataentrada}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {n.datasaida}
+                      </StyledTableCell>
                     </TableRow>
                   );
                 })}
@@ -448,4 +338,14 @@ EnhancedTable.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(EnhancedTable);
+const mapStateToProps = state => ({
+  immigrants: state.immigrants
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(ImmigrantActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(EnhancedTable));

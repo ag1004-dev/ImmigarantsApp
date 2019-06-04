@@ -22,7 +22,7 @@ export default function immigrants(state = INITIAL_STATE, action) {
       return { ...state, };
 
     case Types.ADD_SUCCESS:
-      return { ...state, error: null, data: [...state.data, action.payload.data] };
+      return { ...state, error: null, data: [ action.payload.data] };
 
     case Types.ADD_FAILURE:
       return { ...state, error: action.payload.error };

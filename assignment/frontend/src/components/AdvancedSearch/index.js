@@ -9,6 +9,7 @@ import {
   Col,
   Nav
 } from "react-bootstrap";
+import { toast } from "react-toastify";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Creators as ImmigrantActions } from "../../store/ducks/immigrants";
@@ -20,7 +21,14 @@ class AdvancedSearch extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addImmigrantRequest(this.state.searchInput);
+    if (this.state.searchInput === "") {
+      toast.error("Preencha os campos!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000
+      });
+    }
+    else 
+      this.props.addImmigrantRequest(this.state.searchInput);
   };
 
   render() {
@@ -44,14 +52,10 @@ class AdvancedSearch extends Component {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="fourth">
-                    Pela data de entrada
-                  </Nav.Link>
+                  <Nav.Link eventKey="fourth">Pela data de entrada</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="fifth">
-                    Pela data de saída
-                  </Nav.Link>
+                  <Nav.Link eventKey="fifth">Pela data de saída</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>
@@ -144,7 +148,10 @@ class AdvancedSearch extends Component {
                     </InputGroup.Append>
                   </InputGroup>
                 </Tab.Pane>
-                <Tab.Pane eventKey="fifth" className="d-flex align-items-center justify-content-center">
+                <Tab.Pane
+                  eventKey="fifth"
+                  className="d-flex align-items-center justify-content-center"
+                >
                   <InputGroup className="mt-5">
                     <FormControl
                       placeholder="Data de saída do país"

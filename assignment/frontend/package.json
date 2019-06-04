@@ -18,6 +18,7 @@
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-toastify": "^5.2.1",
     "reactotron-react-js": "^3.2.3",
     "reactotron-redux": "^3.1.0",
     "reactotron-redux-saga": "^4.2.2",
