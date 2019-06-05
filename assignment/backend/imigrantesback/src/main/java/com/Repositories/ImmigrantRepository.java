@@ -4,7 +4,6 @@ import com.Model.Immigrant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
-import java.util.Date;
 
 @Repository
 public interface ImmigrantRepository extends JpaRepository<Immigrant, Long> {
