@@ -19,6 +19,7 @@ public class ImmigrantController {
     @Autowired
     private ImmigrantRepository immigrantRepository;
 
+    //Rotas de GET
     @GetMapping("/immigrants/{name}")
     public List<Immigrant> getImmigrantsByName(@PathVariable String name) {
          return immigrantRepository.findByNomeContaining(name);
@@ -35,12 +36,12 @@ public class ImmigrantController {
     }
 
     @GetMapping("/dataent/{dataentrada}")
-    public List<Immigrant> getImmigrantsByDataentrada(@PathVariable Date dataentrada) {
+    public List<Immigrant> getImmigrantsByDataentrada(@PathVariable String dataentrada) {
          return immigrantRepository.findByDataentrada(dataentrada);
      }
 
      @GetMapping("/datasai/{datasaida}")
-     public List<Immigrant> getImmigrantsByDatasaida(@PathVariable Date datasaida) {
+     public List<Immigrant> getImmigrantsByDatasaida(@PathVariable String datasaida) {
           return immigrantRepository.findByDatasaida(datasaida);
       }
 

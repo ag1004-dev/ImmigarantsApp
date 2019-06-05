@@ -9,16 +9,11 @@ import javax.validation.constraints.Size;
 @Table(name = "immigrants")
 public class Immigrant extends AuditModel {
     @Id
-    @GeneratedValue(generator = "immigrant_generator")
-    @SequenceGenerator(
-            name = "immigrant_generator",
-            sequenceName = "immigrant_sequence",
-            initialValue = 1000
-    )
-    private Long id;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;
 
     @NotBlank
-    @Size(min = 3, max = 100)
+    @Column(columnDefinition = "text")
     private String nome;
 
     @NotBlank
@@ -28,11 +23,11 @@ public class Immigrant extends AuditModel {
     @Column(columnDefinition = "text")
     private String pais;
 
-    @Column(columnDefinition = "date")
-    private Date dataentrada;
+    @Column(columnDefinition = "text")
+    private String dataentrada;
 
-    @Column(columnDefinition = "date")
-    private Date datasaida;
+    @Column(columnDefinition = "text")
+    private String datasaida;
 
     @Column(columnDefinition = "text")
     private String genero;
@@ -43,17 +38,14 @@ public class Immigrant extends AuditModel {
     @Column(columnDefinition = "text")
     private String nomemae;
 
-    @Column(columnDefinition = "date")
-    private Date datanascimento;
-
     @Column(columnDefinition = "text")
-    private String tipo;
+      private String datanascimento;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -73,27 +65,27 @@ public class Immigrant extends AuditModel {
 		this.passaporte = passaporte;
 	}
 
-	public Date getDatanascimento() {
+	public String getDatanascimento() {
 		return datanascimento;
 	}
 
-	public void setDatanascimento(Date data) {
+	public void setDatanascimento(String data) {
 		this.datanascimento = data;
 	}
 
-  public Date getDataentrada() {
+  public String getDataentrada() {
     return dataentrada;
   }
 
-  public void setDataentrada(Date data) {
+  public void setDataentrada(String data) {
     this.dataentrada = data;
   }
 
-  public Date getDatasaida() {
+  public String getDatasaida() {
     return datanascimento;
   }
 
-  public void setDatasaida(Date data) {
+  public void setDatasaida(String data) {
     this.datanascimento = data;
   }
 
@@ -127,13 +119,5 @@ public class Immigrant extends AuditModel {
 
   public void setPais(String pais) {
     this.pais = pais;
-  }
-
-  public String getTipo() {
-    return tipo;
-  }
-
-  public void setTipo(String tipo) {
-    this.tipo = tipo;
   }
 }
