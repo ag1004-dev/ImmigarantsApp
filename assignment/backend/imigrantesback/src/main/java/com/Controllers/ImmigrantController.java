@@ -24,6 +24,11 @@ public class ImmigrantController {
          return immigrantRepository.findByNomeContaining(name);
      }
 
+     @GetMapping("/pais/{pais}")
+     public List<Immigrant> getImmigrantsByCountry(@PathVariable String pais) {
+          return immigrantRepository.findByPais(pais);
+      }
+
      @GetMapping("/immigrants/{name}/{pais}")
      public List<Immigrant> getImmigrantsByNameAndCountry(@PathVariable String pais, @PathVariable String name) {
           return immigrantRepository.findByNomeContainingAndPais(name, pais);
