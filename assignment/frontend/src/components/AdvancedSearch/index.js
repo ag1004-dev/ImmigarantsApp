@@ -16,20 +16,36 @@ import { Creators as ImmigrantActions } from "../../store/ducks/immigrants";
 
 class AdvancedSearch extends Component {
   state = {
-    searchInput: ""
+    nameInput: "",
+    countryInput: ""
   };
 
   handleSubmitByName = e => {
     e.preventDefault();
-    if (this.state.searchInput === "") {
+    if (this.state.nameInput === "") {
       toast.error("Preencha os campos!", {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 2000
       });
-    }
-    else { 
+    } else {
       this.props.clearImmigrantData();
-      this.props.searchImmigrantByNameRequest(this.state.searchInput);
+      this.props.searchImmigrantByNameRequest(this.state.nameInput);
+    }
+  };
+
+  handleSubmitNameCountry = e => {
+    e.preventDefault();
+    if (this.state.nameInput === "" || this.state.countryInput === "") {
+      toast.error("Preencha os campos!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000
+      });
+    } else {
+      this.props.clearImmigrantData();
+      this.props.searchNameCountryRequest(
+        this.state.nameInput,
+        this.state.countryInput
+      );
     }
   };
 
@@ -70,7 +86,7 @@ class AdvancedSearch extends Component {
                       aria-label="Nome"
                       aria-describedby="basic-addon2"
                       onChange={e =>
-                        this.setState({ searchInput: e.target.value })
+                        this.setState({ nameInput: e.target.value })
                       }
                     />
                     <InputGroup.Append>
@@ -90,6 +106,9 @@ class AdvancedSearch extends Component {
                       placeholder="Nome"
                       aria-label="Nome"
                       aria-describedby="basic-addon2"
+                      onChange={e =>
+                        this.setState({ nameInput: e.target.value })
+                      }
                     />
                     {/* <InputGroup.Append>
                                     <Button variant="outline-primary">Buscar</Button>
@@ -100,9 +119,16 @@ class AdvancedSearch extends Component {
                       placeholder="Nacionalidade"
                       aria-label="Nacionalidade"
                       aria-describedby="basic-addon2"
+                      onChange={e =>
+                        this.setState({ countryInput: e.target.value })
+                      }
                     />
                     <InputGroup.Append>
-                      <Button variant="outline-primary" type="submit">
+                      <Button
+                        variant="outline-primary"
+                        type="submit"
+                        onClick={e => this.handleSubmitNameCountry(e)}
+                      >
                         Buscar
                       </Button>
                     </InputGroup.Append>
