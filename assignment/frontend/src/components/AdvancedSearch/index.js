@@ -56,12 +56,12 @@ class AdvancedSearch extends Component {
           <Row>
             <Col sm={3}>
               <Nav variant="pills" className="flex-column">
-                <Nav.Item>
+                {/* <Nav.Item>
                   <Nav.Link eventKey="first">Pesquise pelo nome</Nav.Link>
-                </Nav.Item>
+                </Nav.Item> */}
                 <Nav.Item>
                   <Nav.Link eventKey="second">
-                    Pelo nome e nacionalidade
+                    Pesquise pelo nome ou nacionalidade
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
