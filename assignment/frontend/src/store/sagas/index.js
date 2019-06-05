@@ -1,7 +1,7 @@
 import { all, takeLatest } from "redux-saga/effects";
-import { addImmigrant } from "./immigrants";
+import { searchImmigrantByName } from "./immigrants";
 import { Types as ImmigrantTypes } from "../ducks/immigrants";
 
 export default function* rootSaga() {
-  yield all([takeLatest(ImmigrantTypes.ADD_REQUEST, addImmigrant)]);
+  yield all([takeLatest(ImmigrantTypes.SEARCHNAME_REQUEST, searchImmigrantByName)]);
 }

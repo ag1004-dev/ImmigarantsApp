@@ -209,6 +209,7 @@ class EnhancedTable extends React.Component {
 
   componentWillReceiveProps = nextProps => {
     const { data } = nextProps.immigrants;
+    this.setState({ data: []});
     var nextState = [];
     if (data[0]) {
       const arr = data[0];
@@ -217,6 +218,7 @@ class EnhancedTable extends React.Component {
       });
       this.setState({ data: [...this.state.data, nextState]});
     }
+    // console.tron.log(this.state.data);
   };
 
   handleRequestSort = (event, property) => {

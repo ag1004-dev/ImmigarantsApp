@@ -19,7 +19,7 @@ class AdvancedSearch extends Component {
     searchInput: ""
   };
 
-  handleSubmit = e => {
+  handleSubmitByName = e => {
     e.preventDefault();
     if (this.state.searchInput === "") {
       toast.error("Preencha os campos!", {
@@ -27,8 +27,10 @@ class AdvancedSearch extends Component {
         autoClose: 2000
       });
     }
-    else 
-      this.props.addImmigrantRequest(this.state.searchInput);
+    else { 
+      this.props.clearImmigrantData();
+      this.props.searchImmigrantByNameRequest(this.state.searchInput);
+    }
   };
 
   render() {
@@ -75,7 +77,7 @@ class AdvancedSearch extends Component {
                       <Button
                         variant="outline-primary"
                         type="submit"
-                        onClick={e => this.handleSubmit(e)}
+                        onClick={e => this.handleSubmitByName(e)}
                       >
                         Buscar
                       </Button>

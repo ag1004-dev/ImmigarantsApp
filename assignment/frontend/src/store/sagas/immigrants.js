@@ -3,7 +3,7 @@ import api from "../../services/api";
 import { toast } from "react-toastify";
 import { Creators as ImmigrantActions } from "../ducks/immigrants";
 
-export function* addImmigrant(action) {
+export function* searchImmigrantByName(action) {
   try {
     const { data } = yield call(api.get, `/immigrants/${action.payload.imm}`);
     if(data.length === 0) {
@@ -14,12 +14,12 @@ export function* addImmigrant(action) {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 2000
     });
-    yield put(ImmigrantActions.addImmigrantSuccess(data));
+    yield put(ImmigrantActions.searchImmigrantSuccess(data));
   } catch (error) {
     toast.error(error, {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 2000
     });
-    yield put(ImmigrantActions.addImmigrantFailure(error));
+    yield put(ImmigrantActions.searchImmigrantFailure(error));
   }
 }

@@ -1,9 +1,10 @@
 //ACTION TYPES
 
 export const Types = {
-  ADD_REQUEST: 'immigrant/ADD_REQUEST',
+  SEARCHNAME_REQUEST: 'immigrant/SEARCHNAME_REQUEST',
   ADD_SUCCESS: 'immigrant/ADD_SUCCESS',
   ADD_FAILURE: 'immigrant/ADD_FAILURE',
+  CLEAR_DATA: 'immigrant/CLEAR_DATA'
 };  
 
 //REDUCER
@@ -18,7 +19,7 @@ export default function immigrants(state = INITIAL_STATE, action) {
     default:
       return state;
 
-    case Types.ADD_REQUEST:
+    case Types.SEARCHNAME_REQUEST:
       return { ...state, };
 
     case Types.ADD_SUCCESS:
@@ -26,24 +27,31 @@ export default function immigrants(state = INITIAL_STATE, action) {
 
     case Types.ADD_FAILURE:
       return { ...state, error: action.payload.error };
+    
+    case Types.CLEAR_DATA:
+      return { ...state, data: []};
   }
 }
 
 //ACTIONS
 
 export const Creators = {
-  addImmigrantRequest: imm => ({
-    type: Types.ADD_REQUEST,
+  searchImmigrantByNameRequest: imm => ({
+    type: Types.SEARCHNAME_REQUEST,
     payload: { imm },
   }),
 
-  addImmigrantSuccess: data => ({
+  searchImmigrantSuccess: data => ({
     type: Types.ADD_SUCCESS,
     payload: { data },
   }),
 
-  addImmigrantFailure: error => ({
+  searchImmigrantFailure: error => ({
     type: Types.ADD_FAILURE,
     payload: { error },
+  }),
+
+  clearImmigrantData: () => ({
+    type: Types.CLEAR_DATA,
   })
-};
+} 
