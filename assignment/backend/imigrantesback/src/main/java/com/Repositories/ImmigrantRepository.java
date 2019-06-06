@@ -12,4 +12,5 @@ public interface ImmigrantRepository extends JpaRepository<Immigrant, Long> {
   List<Immigrant> findByNomeContainingAndPais(String nome, String pais);
   List<Immigrant> findByDataentrada(String dataentrada);
   List<Immigrant> findByDatasaida(String datasaida);
+  List<Immigrant> findByPais(String pais);
 }

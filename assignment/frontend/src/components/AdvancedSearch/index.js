@@ -56,12 +56,12 @@ class AdvancedSearch extends Component {
           <Row>
             <Col sm={3}>
               <Nav variant="pills" className="flex-column">
-                <Nav.Item>
+                {/* <Nav.Item>
                   <Nav.Link eventKey="first">Pesquise pelo nome</Nav.Link>
-                </Nav.Item>
+                </Nav.Item> */}
                 <Nav.Item>
                   <Nav.Link eventKey="second">
-                    Pelo nome e nacionalidade
+                    Pesquise pelo nome ou nacionalidade
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
@@ -79,7 +79,7 @@ class AdvancedSearch extends Component {
             </Col>
             <Col sm={9}>
               <Tab.Content>
-                <Tab.Pane eventKey="first">
+                {/* <Tab.Pane eventKey="first">
                   <InputGroup className="mt-5">
                     <FormControl
                       placeholder="Nome"
@@ -99,9 +99,9 @@ class AdvancedSearch extends Component {
                       </Button>
                     </InputGroup.Append>
                   </InputGroup>
-                </Tab.Pane>
+                </Tab.Pane> */}
                 <Tab.Pane eventKey="second">
-                  <InputGroup className="mt-5">
+                  <InputGroup className="">
                     <FormControl
                       placeholder="Nome"
                       aria-label="Nome"
