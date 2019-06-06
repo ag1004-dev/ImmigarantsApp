@@ -2,6 +2,7 @@
 
 export const Types = {
   SEARCHNAME_REQUEST: "immigrant/SEARCHNAME_REQUEST",
+  FETCHALL_REQUEST: "immigrant/FETCHALL_REQUEST",
   SEARCHNAMECOUNTRY_REQUEST: "immigrant/SEARCHNAMECOUNTRY_REQUEST",
   ADD_SUCCESS: "immigrant/ADD_SUCCESS",
   ADD_FAILURE: "immigrant/ADD_FAILURE",
@@ -26,6 +27,9 @@ export default function immigrants(state = INITIAL_STATE, action) {
     case Types.SEARCHNAMECOUNTRY_REQUEST:
       return { ...state };
 
+    case Types.FETCHALL_REQUEST:
+      return { ...state };
+
     case Types.ADD_SUCCESS:
       return { ...state, error: null, data: [action.payload.data] };
 
@@ -48,6 +52,10 @@ export const Creators = {
   searchNameCountryRequest: (name, country) => ({
     type: Types.SEARCHNAMECOUNTRY_REQUEST,
     payload: { name, country }
+  }),
+
+  getImmigrants: () => ({
+    type: Types.FETCHALL_REQUEST
   }),
 
   searchImmigrantSuccess: data => ({

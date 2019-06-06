@@ -17,12 +17,13 @@ import { StyledTableCell } from "./styles";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Creators as ImmigrantActions } from "../../store/ducks/immigrants";
+import { Creators as ModalActions } from "../../store/ducks/modal";
 
 let counter = 0;
-function createData(name, passaporte, pais, dataEntrada, dataSaida) {
-  counter += 1;
-  return { id: counter, name, passaporte, pais, dataEntrada, dataSaida };
-}
+// function createData(name, passaporte, pais, dataEntrada, dataSaida) {
+//   counter += 1;
+//   return { id: counter, name, passaporte, pais, dataEntrada, dataSaida };
+// }
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -34,15 +35,15 @@ function desc(a, b, orderBy) {
   return 0;
 }
 
-function stableSort(array, cmp) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = cmp(a[0], b[0]);
-    if (order !== 0) return order;
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map(el => el[0]);
-}
+  function stableSort(array, cmp) {
+    const stabilizedThis = array.map((el, index) => [el, index]);
+    stabilizedThis.sort((a, b) => {
+      const order = cmp(a[0], b[0]);
+      if (order !== 0) return order;
+      return a[1] - b[1];
+    });
+    return stabilizedThis.map(el => el[0]);
+  };
 
 function getSorting(order, orderBy) {
   return order === "desc"
@@ -59,20 +60,20 @@ const rows = [
   },
   {
     id: "passaporte",
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: "Passaporte"
   },
   { id: "pais", numeric: true, disablePadding: false, label: "País de Origem" },
   {
     id: "dataEntrada",
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: "Data de Entrada"
   },
   {
     id: "dataSaida",
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: "Data de Saída"
   }
@@ -200,16 +201,20 @@ class EnhancedTable extends React.Component {
     rowsPerPage: 15
   };
 
+  componentDidMount = async () => {
+    await this.props.getImmigrants();
+  }
+
   componentWillReceiveProps = nextProps => {
     const { data } = nextProps.immigrants;
-    this.setState({ data: []});
+    this.setState({ data: [] });
     var nextState = [];
     if (data[0]) {
       const arr = data[0];
       arr.forEach(imm => {
         nextState.push(imm);
       });
-      this.setState({ data: [...this.state.data, nextState]});
+      this.setState({ data: [...this.state.data, nextState] });
     }
   };
 
@@ -232,8 +237,8 @@ class EnhancedTable extends React.Component {
     this.setState({ selected: [] });
   };
 
-  handleClick = (event, id) => {
-    // TODO Implementar!!
+  handleClick = (event, imm) => {
+    this.props.showModal(imm);
   };
 
   handleChangePage = (event, page) => {
@@ -266,40 +271,43 @@ class EnhancedTable extends React.Component {
               rowCount={data.length}
             />
             <TableBody>
-              {data[0] && stableSort(data[0], getSorting(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map(n => {
-                  const isSelected = this.isSelected(n.id);
-                  return (
-                    <TableRow
-                      hover
-                      onClick={event => this.handleClick(event, n.id)}
-                      role="checkbox"
-                      aria-checked={isSelected}
-                      tabIndex={-1}
-                      key={n.id}
-                      selected={isSelected}
-                    >
-                      <StyledTableCell
-                        component="th"
-                        scope="row"
-                        padding="default"
+              {data[0] &&
+                stableSort(data[0], getSorting(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map(n => {
+                    const isSelected = this.isSelected(n.id);
+                    return (
+                      <TableRow
+                        hover
+                        onClick={event => this.handleClick(event, n)}
+                        role="checkbox"
+                        aria-checked={isSelected}
+                        tabIndex={-1}
+                        key={n.id}
+                        selected={isSelected}
                       >
-                        {n.nome}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {n.passaporte}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">{n.pais}</StyledTableCell>
-                      <StyledTableCell align="right">
-                        {n.dataentrada}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {n.datasaida}
-                      </StyledTableCell>
-                    </TableRow>
-                  );
-                })}
+                        <StyledTableCell
+                          component="th"
+                          scope="row"
+                          padding="default"
+                        >
+                          {n.nome}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {n.passaporte}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {n.pais}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {n.dataentrada}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {n.datasaida}
+                        </StyledTableCell>
+                      </TableRow>
+                    );
+                  })}
               {emptyRows > 0 && (
                 <TableRow style={{ height: 49 * emptyRows }}>
                   <StyledTableCell colSpan={6} />
@@ -337,7 +345,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(ImmigrantActions, dispatch);
+  bindActionCreators({...ImmigrantActions, ...ModalActions}, dispatch);
 
 export default connect(
   mapStateToProps,
