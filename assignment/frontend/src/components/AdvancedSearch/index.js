@@ -35,17 +35,30 @@ class AdvancedSearch extends Component {
 
   handleSubmitNameCountry = e => {
     e.preventDefault();
-    if (this.state.nameInput === "" || this.state.countryInput === "") {
+
+    const {
+      clearImmigrantData,
+      searchImmigrantByNameRequest,
+      searchNameCountryRequest,
+      searchByCountryRequest
+    } = this.props;
+
+    if (this.state.nameInput === "" && this.state.countryInput === "") {
       toast.error("Preencha os campos!", {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 2000
       });
     } else {
-      this.props.clearImmigrantData();
-      this.props.searchNameCountryRequest(
-        this.state.nameInput,
-        this.state.countryInput
-      );
+      if (this.state.nameInput !== "" && this.state.countryInput !== "") {
+        clearImmigrantData();
+        searchNameCountryRequest(this.state.nameInput, this.state.countryInput);
+      } else if (this.state.nameInput === "") {
+        clearImmigrantData();
+        searchByCountryRequest(this.state.countryInput);
+      } else {
+        clearImmigrantData();
+        searchImmigrantByNameRequest(this.state.nameInput);
+      }
     }
   };
 

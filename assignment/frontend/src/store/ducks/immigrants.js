@@ -54,6 +54,11 @@ export const Creators = {
     payload: { name, country }
   }),
 
+  searchByCountryRequest: (country) => ({
+    type: Types.SEARCHNAMECOUNTRY_REQUEST,
+    payload: { country }
+  }),
+
   getImmigrants: () => ({
     type: Types.FETCHALL_REQUEST
   }),

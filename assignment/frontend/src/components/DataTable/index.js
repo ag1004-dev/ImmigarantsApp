@@ -13,7 +13,6 @@ import Paper from "@material-ui/core/Paper";
 import Tooltip from "@material-ui/core/Tooltip";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
 import { StyledTableCell } from "./styles";
-
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Creators as ImmigrantActions } from "../../store/ducks/immigrants";
@@ -35,15 +34,15 @@ function desc(a, b, orderBy) {
   return 0;
 }
 
-  function stableSort(array, cmp) {
-    const stabilizedThis = array.map((el, index) => [el, index]);
-    stabilizedThis.sort((a, b) => {
-      const order = cmp(a[0], b[0]);
-      if (order !== 0) return order;
-      return a[1] - b[1];
-    });
-    return stabilizedThis.map(el => el[0]);
-  };
+function stableSort(array, cmp) {
+  const stabilizedThis = array.map((el, index) => [el, index]);
+  stabilizedThis.sort((a, b) => {
+    const order = cmp(a[0], b[0]);
+    if (order !== 0) return order;
+    return a[1] - b[1];
+  });
+  return stabilizedThis.map(el => el[0]);
+}
 
 function getSorting(order, orderBy) {
   return order === "desc"
@@ -203,7 +202,7 @@ class EnhancedTable extends React.Component {
 
   componentDidMount = async () => {
     await this.props.getImmigrants();
-  }
+  };
 
   componentWillReceiveProps = nextProps => {
     const { data } = nextProps.immigrants;
@@ -237,8 +236,8 @@ class EnhancedTable extends React.Component {
     this.setState({ selected: [] });
   };
 
-  handleClick = (event, imm) => {
-    this.props.showModal(imm);
+  handleClick = async (event, imm) => {
+    await this.props.showModal(imm);
   };
 
   handleChangePage = (event, page) => {
@@ -345,7 +344,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({...ImmigrantActions, ...ModalActions}, dispatch);
+  bindActionCreators({ ...ImmigrantActions, ...ModalActions }, dispatch);
 
 export default connect(
   mapStateToProps,
