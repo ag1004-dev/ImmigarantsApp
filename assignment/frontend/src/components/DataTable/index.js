@@ -252,8 +252,7 @@ class EnhancedTable extends React.Component {
   render() {
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
-    const emptyRows =
-      rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+    const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     return (
       <Paper className={classes.root}>
@@ -266,7 +265,7 @@ class EnhancedTable extends React.Component {
               orderBy={orderBy}
               onSelectAllClick={this.handleSelectAllClick}
               onRequestSort={this.handleRequestSort}
-              rowCount={data.length}
+              rowCount={rows.length}
             />
             <TableBody>
               {data[0] &&
@@ -317,7 +316,7 @@ class EnhancedTable extends React.Component {
         <TablePagination
           rowsPerPageOptions={[15, 20, 25]}
           component="div"
-          count={data.length}
+          count={rows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           backIconButtonProps={{
