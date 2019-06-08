@@ -72,16 +72,41 @@ export function* searchImmigrantByCountry(action) {
   }
 }
 
-export function* getAllImmigrants() {
+export function* searchImmigrantByPK(action) {
   try {
-    const { data } = yield call(api.get, `/immigrants`);
-    yield put(ImmigrantActions.searchImmigrantSuccess(data.content));
+    const { data } = yield call(
+      api.get,
+      `/pass/${action.payload.passport}`
+    );
+    if (data.length === 0) {
+      const error = "Sem resultados!";
+      throw error;
+    }
+    toast.success("Sucesso!", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
+    var arrData = [];
+    arrData.push(data);
+    yield put(ImmigrantActions.searchImmigrantSuccess(arrData));
   } catch (error) {
     toast.error(error, {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 2000
     });
-    console.tron.log("mano3");
+    yield put(ImmigrantActions.searchImmigrantFailure(error));
+  }
+}
+
+export function* getAllImmigrants() {
+  try {
+    const { data } = yield call(api.get, `/immigrants`);
+    yield put(ImmigrantActions.searchImmigrantSuccess(data));
+  } catch (error) {
+    toast.error(error, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
     yield put(ImmigrantActions.searchImmigrantFailure(error));
   }
 }

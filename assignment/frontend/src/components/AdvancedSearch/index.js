@@ -17,7 +17,9 @@ import { Creators as ImmigrantActions } from "../../store/ducks/immigrants";
 class AdvancedSearch extends Component {
   state = {
     nameInput: "",
-    countryInput: ""
+    countryInput: "",
+    passInput: "",
+    dataInput: ""
   };
 
   handleSubmitByName = e => {
@@ -62,6 +64,19 @@ class AdvancedSearch extends Component {
     }
   };
 
+  handleSubmitPass = e => {
+    e.preventDefault();
+    if (this.state.passInput === "") {
+      toast.error("Preencha os campos!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000
+      });
+    } else {
+      this.props.clearImmigrantData();
+      this.props.searchByPk(this.state.passInput);
+    }
+  };
+
   render() {
     return (
       <Container className="mt-5 pt-5">
@@ -92,27 +107,6 @@ class AdvancedSearch extends Component {
             </Col>
             <Col sm={9}>
               <Tab.Content>
-                {/* <Tab.Pane eventKey="first">
-                  <InputGroup className="mt-5">
-                    <FormControl
-                      placeholder="Nome"
-                      aria-label="Nome"
-                      aria-describedby="basic-addon2"
-                      onChange={e =>
-                        this.setState({ nameInput: e.target.value })
-                      }
-                    />
-                    <InputGroup.Append>
-                      <Button
-                        variant="outline-primary"
-                        type="submit"
-                        onClick={e => this.handleSubmitByName(e)}
-                      >
-                        Buscar
-                      </Button>
-                    </InputGroup.Append>
-                  </InputGroup>
-                </Tab.Pane> */}
                 <Tab.Pane eventKey="second">
                   <InputGroup className="">
                     <FormControl
@@ -123,9 +117,6 @@ class AdvancedSearch extends Component {
                         this.setState({ nameInput: e.target.value })
                       }
                     />
-                    {/* <InputGroup.Append>
-                                    <Button variant="outline-primary">Buscar</Button>
-                                </InputGroup.Append> */}
                   </InputGroup>
                   <InputGroup className="mt-4">
                     <FormControl
@@ -154,14 +145,14 @@ class AdvancedSearch extends Component {
                       aria-label="Número do passaporte"
                       aria-describedby="basic-addon2"
                       onChange={e =>
-                        this.setState({ searchInput: e.target.value })
+                        this.setState({ passInput: e.target.value })
                       }
                     />
                     <InputGroup.Append>
                       <Button
                         variant="outline-primary"
                         type="submit"
-                        onClick={e => this.handleSubmit(e)}
+                        onClick={e => this.handleSubmitPass(e)}
                       >
                         Buscar
                       </Button>

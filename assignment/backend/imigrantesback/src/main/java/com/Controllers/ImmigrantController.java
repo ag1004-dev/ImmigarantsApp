@@ -50,8 +50,8 @@ public class ImmigrantController {
       }
 
     @GetMapping("/immigrants")
-    public Page<Immigrant> getImmigrants(Pageable pageable) {
-        return immigrantRepository.findAll(pageable);
+    public List<Immigrant> getImmigrants() {
+        return immigrantRepository.findAll();
     }
 
 //    @RequestMapping(consumes = {"application/json"})

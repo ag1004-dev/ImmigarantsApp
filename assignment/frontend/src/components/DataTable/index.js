@@ -63,7 +63,7 @@ const rows = [
     disablePadding: false,
     label: "Passaporte"
   },
-  { id: "pais", numeric: true, disablePadding: false, label: "País de Origem" },
+  { id: "pais", numeric: false, disablePadding: false, label: "País de Origem" },
   {
     id: "dataEntrada",
     numeric: false,
@@ -306,7 +306,7 @@ class EnhancedTable extends React.Component {
                     );
                   })}
               {emptyRows > 0 && (
-                <TableRow style={{ height: 49 * emptyRows }}>
+                <TableRow style={{ emptyRows }}>
                   <StyledTableCell colSpan={6} />
                 </TableRow>
               )}
