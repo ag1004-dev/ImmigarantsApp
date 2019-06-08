@@ -161,9 +161,7 @@ let EnhancedTableToolbar = props => {
   return (
     <Toolbar>
       <div className={classes.title}>
-        <Typography variant="h6" id="tableTitle">
-          {/* Lista de Estrangeiros no país */}
-        </Typography>
+        <Typography variant="h6" id="tableTitle" />
       </div>
       <div className={classes.actions} />
     </Toolbar>
@@ -206,15 +204,16 @@ class EnhancedTable extends React.Component {
 
   componentWillReceiveProps = nextProps => {
     const { data } = nextProps.immigrants;
-    this.setState({ data: [] });
-    var nextState = [];
-    if (data[0]) {
-      const arr = data[0];
-      arr.forEach(imm => {
-        nextState.push(imm);
-      });
-      this.setState({ data: [...this.state.data, nextState] });
-    }
+    this.setState({ data });
+    // console.tron.log(this.state);
+    // var nextState = [];
+    // if (data[0]) {
+    //   const arr = data[0];
+    //   arr.forEach(imm => {
+    //     nextState.push(imm);
+    //   });
+    //   this.setState({ data: [...this.state.data, nextState] });
+    // }
   };
 
   handleRequestSort = (event, property) => {
