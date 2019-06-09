@@ -18,11 +18,20 @@ import { connect } from "react-redux";
 import { Creators as ImmigrantActions } from "../../store/ducks/immigrants";
 import { Creators as ModalActions } from "../../store/ducks/modal";
 
-let counter = 0;
+// let counter = 0;
 // function createData(name, passaporte, pais, dataEntrada, dataSaida) {
 //   counter += 1;
 //   return { id: counter, name, passaporte, pais, dataEntrada, dataSaida };
 // }
+
+function length(obj) {
+  // return Object.keys(obj).length;
+  let count = 0;
+  for (var c in obj) {
+    count = count + 1;
+  }
+  return count;
+}
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -63,7 +72,12 @@ const rows = [
     disablePadding: false,
     label: "Passaporte"
   },
-  { id: "pais", numeric: false, disablePadding: false, label: "País de Origem" },
+  {
+    id: "pais",
+    numeric: false,
+    disablePadding: false,
+    label: "País de Origem"
+  },
   {
     id: "dataEntrada",
     numeric: false,
@@ -89,31 +103,28 @@ class EnhancedTableHead extends React.Component {
     return (
       <TableHead>
         <TableRow>
-          {rows.map(
-            row => (
-              <StyledTableCell
-                key={row.id}
-                align={row.numeric ? "right" : "left"}
-                padding="default"
-                sortDirection={orderBy === row.id ? order : false}
+          {rows.map(row => (
+            <StyledTableCell
+              key={row.id}
+              align={row.numeric ? "right" : "left"}
+              padding="default"
+              sortDirection={orderBy === row.id ? order : false}
+            >
+              <Tooltip
+                title="Sort"
+                placement={row.numeric ? "bottom-end" : "bottom-start"}
+                enterDelay={300}
               >
-                <Tooltip
-                  title="Sort"
-                  placement={row.numeric ? "bottom-end" : "bottom-start"}
-                  enterDelay={300}
+                <TableSortLabel
+                  active={orderBy === row.id}
+                  direction={order}
+                  onClick={this.createSortHandler(row.id)}
                 >
-                  <TableSortLabel
-                    active={orderBy === row.id}
-                    direction={order}
-                    onClick={this.createSortHandler(row.id)}
-                  >
-                    {row.label}
-                  </TableSortLabel>
-                </Tooltip>
-              </StyledTableCell>
-            ),
-            this
-          )}
+                  {row.label}
+                </TableSortLabel>
+              </Tooltip>
+            </StyledTableCell>
+          ))}
         </TableRow>
       </TableHead>
     );
@@ -252,7 +263,8 @@ class EnhancedTable extends React.Component {
   render() {
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    const emptyRows =
+      rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     return (
       <Paper className={classes.root}>
@@ -316,7 +328,7 @@ class EnhancedTable extends React.Component {
         <TablePagination
           rowsPerPageOptions={[15, 20, 25]}
           component="div"
-          count={rows.length}
+          count={length(data[0])}
           rowsPerPage={rowsPerPage}
           page={page}
           backIconButtonProps={{
