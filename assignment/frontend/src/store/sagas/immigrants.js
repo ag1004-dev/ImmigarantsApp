@@ -38,7 +38,7 @@ export function* searchImmigrantByNC(action) {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 2000
     });
-    yield put(ImmigrantActions.searchImmigrantSuccess(data.content));
+    yield put(ImmigrantActions.searchImmigrantSuccess(data));
   } catch (error) {
     toast.error(error, {
       position: toast.POSITION.TOP_RIGHT,
@@ -50,10 +50,7 @@ export function* searchImmigrantByNC(action) {
 
 export function* searchImmigrantByCountry(action) {
   try {
-    const { data } = yield call(
-      api.get,
-      `/pais/${action.payload.country}`
-    );
+    const { data } = yield call(api.get, `/pais/${action.payload.country}`);
     if (data.length === 0) {
       const error = "Sem resultados!";
       throw error;
@@ -62,7 +59,7 @@ export function* searchImmigrantByCountry(action) {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 2000
     });
-    yield put(ImmigrantActions.searchImmigrantSuccess(data.content));
+    yield put(ImmigrantActions.searchImmigrantSuccess(data));
   } catch (error) {
     toast.error(error, {
       position: toast.POSITION.TOP_RIGHT,
@@ -74,10 +71,7 @@ export function* searchImmigrantByCountry(action) {
 
 export function* searchImmigrantByPK(action) {
   try {
-    const { data } = yield call(
-      api.get,
-      `/pass/${action.payload.passport}`
-    );
+    const { data } = yield call(api.get, `/pass/${action.payload.passport}`);
     if (data.length === 0) {
       const error = "Sem resultados!";
       throw error;
@@ -111,3 +105,44 @@ export function* getAllImmigrants() {
   }
 }
 
+export function* searchImmigrantsByEntrance(action) {
+  try {
+    const { data } = yield call(api.get, `/dataent/${action.payload.entrance}`);
+    if (data.length === 0) {
+      const error = "Sem resultados!";
+      throw error;
+    }
+    toast.success("Sucesso!", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
+    yield put(ImmigrantActions.searchImmigrantSuccess(data));
+  } catch (error) {
+    toast.error(error, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
+    yield put(ImmigrantActions.searchImmigrantFailure(error));
+  }
+}
+
+export function* searchImmigrantsByExit(action) {
+  try {
+    const { data } = yield call(api.get, `/datasai/${action.payload.exit}`);
+    if (data.length === 0) {
+      const error = "Sem resultados!";
+      throw error;
+    }
+    toast.success("Sucesso!", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
+    yield put(ImmigrantActions.searchImmigrantSuccess(data));
+  } catch (error) {
+    toast.error(error, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
+    yield put(ImmigrantActions.searchImmigrantFailure(error));
+  }
+}

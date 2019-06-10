@@ -27,9 +27,12 @@ class ModalImm extends Component {
         className="modal-container"
         overlayClassName="modal-overlay"
       >
-        <p className='close' onClick={this.handleHideModal}>x</p>
+        <p className="close" onClick={this.handleHideModal}>
+          x
+        </p>
         <h1>Dados do Imigrante:</h1>
         <p>Nome: {modal.immigrant.nome}</p>
+        <p>Data de Nascimento: {modal.immigrant.datanascimento}</p>
         <p>País de Origem: {modal.immigrant.pais}</p>
         <p>Passaporte: {modal.immigrant.passaporte}</p>
         <p>Nome do Pai: {modal.immigrant.nomepai}</p>

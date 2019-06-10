@@ -19,7 +19,8 @@ class AdvancedSearch extends Component {
     nameInput: "",
     countryInput: "",
     passInput: "",
-    dataInput: ""
+    dateInput: "",
+    exitInput: ""
   };
 
   handleSubmitByName = e => {
@@ -32,6 +33,32 @@ class AdvancedSearch extends Component {
     } else {
       this.props.clearImmigrantData();
       this.props.searchImmigrantByNameRequest(this.state.nameInput);
+    }
+  };
+
+  handleSubmitEntrance = e => {
+    e.preventDefault();
+    if (this.state.dateInput === "") {
+      toast.error("Preencha os campos!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000
+      });
+    } else {
+      this.props.clearImmigrantData();
+      this.props.searchByEntranceRequest(this.state.dateInput);
+    }
+  };
+
+  handleSubmitExit = e => {
+    e.preventDefault();
+    if (this.state.exitInput === "") {
+      toast.error("Preencha os campos!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000
+      });
+    } else {
+      this.props.clearImmigrantData();
+      this.props.searchByExitRequest(this.state.exitInput);
     }
   };
 
@@ -166,14 +193,14 @@ class AdvancedSearch extends Component {
                       aria-label="Data de entrada no país"
                       aria-describedby="basic-addon2"
                       onChange={e =>
-                        this.setState({ searchInput: e.target.value })
+                        this.setState({ dateInput: e.target.value })
                       }
                     />
                     <InputGroup.Append>
                       <Button
                         variant="outline-primary"
                         type="submit"
-                        onClick={e => this.handleSubmit(e)}
+                        onClick={e => this.handleSubmitEntrance(e)}
                       >
                         Buscar
                       </Button>
@@ -190,14 +217,14 @@ class AdvancedSearch extends Component {
                       aria-label="Data de saída do país"
                       aria-describedby="basic-addon2"
                       onChange={e =>
-                        this.setState({ searchInput: e.target.value })
+                        this.setState({ exitInput: e.target.value })
                       }
                     />
                     <InputGroup.Append>
                       <Button
                         variant="outline-primary"
                         type="submit"
-                        onClick={e => this.handleSubmit(e)}
+                        onClick={e => this.handleSubmitExit(e)}
                       >
                         Buscar
                       </Button>

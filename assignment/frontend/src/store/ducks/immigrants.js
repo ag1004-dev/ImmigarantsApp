@@ -4,7 +4,10 @@ export const Types = {
   SEARCHNAME_REQUEST: "immigrant/SEARCHNAME_REQUEST",
   FETCHALL_REQUEST: "immigrant/FETCHALL_REQUEST",
   SEARCHNAMECOUNTRY_REQUEST: "immigrant/SEARCHNAMECOUNTRY_REQUEST",
+  SEARCHCOUNTRY_REQUEST: "immigrant/SEARCHCOUNTRY_REQUEST",
   SEARCHBYPK_REQUEST: "immigrant/SEARCHBYPK_REQUEST",
+  SEARCHBYENTRANCE_REQUEST: "immigrant/SEARCHBYENTRANCE_REQUEST",
+  SEARCHBYEXIT_REQUEST: "immigrant/SEARCHBYEXIT_REQUEST",
   ADD_SUCCESS: "immigrant/ADD_SUCCESS",
   ADD_FAILURE: "immigrant/ADD_FAILURE",
   CLEAR_DATA: "immigrant/CLEAR_DATA"
@@ -32,6 +35,12 @@ export default function immigrants(state = INITIAL_STATE, action) {
       return { ...state };
 
     case Types.SEARCHBYPK_REQUEST:
+      return { ...state };
+
+    case Types.SEARCHBYENTRANCE_REQUEST:
+      return { ...state };
+
+    case Types.SEARCHBYEXIT_REQUEST:
       return { ...state };
 
     case Types.ADD_SUCCESS:
@@ -64,8 +73,18 @@ export const Creators = {
   }),
 
   searchByCountryRequest: country => ({
-    type: Types.SEARCHNAMECOUNTRY_REQUEST,
+    type: Types.SEARCHCOUNTRY_REQUEST,
     payload: { country }
+  }),
+
+  searchByEntranceRequest: entrance => ({
+    type: Types.SEARCHBYENTRANCE_REQUEST,
+    payload: { entrance }
+  }),
+
+  searchByExitRequest: exit => ({
+    type: Types.SEARCHBYEXIT_REQUEST,
+    payload: { exit }
   }),
 
   getImmigrants: () => ({
