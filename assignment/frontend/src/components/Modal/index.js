@@ -28,7 +28,6 @@ class ModalImm extends Component {
         className="modal-container"
         overlayClassName="modal-overlay"
       >
-<<<<<<< HEAD
         <Container>
           <Button className='close' variant="primary" size='sm' onClick={this.handleHideModal}>X</Button>
           </Container>
