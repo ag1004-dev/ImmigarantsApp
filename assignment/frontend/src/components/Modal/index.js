@@ -28,11 +28,9 @@ class ModalImm extends Component {
         className="modal-container"
         overlayClassName="modal-overlay"
       >
-<<<<<<< HEAD
         <Container>
-          <Button className='close' variant="primary" size='sm' onClick={this.handleHideModal}>X</Button>
           </Container>
-          {/* <p className='close' onClick={this.handleHideModal}>x</p> */}
+          <p className='close' onClick={this.handleHideModal}>x</p>
           <h1>Dados do Imigrante:</h1>
           <p><span>Nome:</span>   {modal.immigrant.nome}</p>
           <p><span>Data de Nascimento:</span>   {modal.immigrant.datanascimento}</p>
