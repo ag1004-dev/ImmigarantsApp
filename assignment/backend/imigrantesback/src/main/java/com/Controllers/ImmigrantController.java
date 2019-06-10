@@ -4,8 +4,8 @@ import com.Exception.ResourceNotFoundException;
 import com.Model.Immigrant;
 import com.Repositories.ImmigrantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+// import org.springframework.data.domain.Page;
+// import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -39,15 +39,19 @@ public class ImmigrantController {
         return immigrantRepository.findByPassaporte(passport);
     }
 
-    @GetMapping("/dataent/{dataentrada}")
-    public List<Immigrant> getImmigrantsByDataentrada(@PathVariable String dataentrada) {
-         return immigrantRepository.findByDataentrada(dataentrada);
-     }
+    @GetMapping("/dataent/{day}/{month}/{year}")
+    public List<Immigrant> getImmigrantsByDataentrada(@PathVariable String day, @PathVariable String month, 
+            @PathVariable String year) {
+        String fetch = day + '/' + month + '/' + year;
+        return immigrantRepository.findByDataentrada(fetch);
+    }
 
-     @GetMapping("/datasai/{datasaida}")
-     public List<Immigrant> getImmigrantsByDatasaida(@PathVariable String datasaida) {
-          return immigrantRepository.findByDatasaida(datasaida);
-      }
+    @GetMapping("/datasai/{day}/{month}/{year}")
+    public List<Immigrant> getImmigrantsByDatasaida(@PathVariable String day, @PathVariable String month,
+            @PathVariable String year) {
+        String fetch = day + '/' + month + '/' + year;
+        return immigrantRepository.findByDatasaida(fetch);
+    }
 
     @GetMapping("/immigrants")
     public List<Immigrant> getImmigrants() {
