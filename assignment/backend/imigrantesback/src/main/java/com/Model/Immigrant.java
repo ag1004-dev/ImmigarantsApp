@@ -81,11 +81,11 @@ public class Immigrant extends AuditModel {
   }
 
   public String getDatasaida() {
-    return datanascimento;
+    return datasaida;
   }
 
   public void setDatasaida(String data) {
-    this.datanascimento = data;
+    this.datasaida = data;
   }
 
   public String getGenero() {

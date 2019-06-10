@@ -68,25 +68,25 @@ const rows = [
   },
   {
     id: "passaporte",
-    numeric: false,
+    numeric: true,
     disablePadding: false,
     label: "Passaporte"
   },
   {
     id: "pais",
-    numeric: false,
+    numeric: true,
     disablePadding: false,
     label: "País de Origem"
   },
   {
     id: "dataEntrada",
-    numeric: false,
+    numeric: true,
     disablePadding: false,
     label: "Data de Entrada"
   },
   {
     id: "dataSaida",
-    numeric: false,
+    numeric: true,
     disablePadding: false,
     label: "Data de Saída"
   }
