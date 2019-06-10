@@ -234,6 +234,9 @@ class EnhancedTable extends React.Component {
     if (this.state.orderBy === property && this.state.order === "desc") {
       order = "asc";
     }
+    else if (this.state.orderBy === property && this.state.order === "asc") {
+      order = "desc";
+    }
 
     this.setState({ order, orderBy });
   };
