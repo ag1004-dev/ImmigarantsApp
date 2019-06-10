@@ -12,8 +12,7 @@
 .close {
   display: flex;
   float: right;
-  /* cursor: pointer; */
-  height: 50px;
+  cursor: pointer;
   width: 50px;
 }
 
