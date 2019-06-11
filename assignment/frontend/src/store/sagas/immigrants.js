@@ -149,7 +149,7 @@ export function* searchImmigrantsByExit(action) {
 
 export function* searchImmigrantsByGender(action) {
   try {
-    const { data } = yield call(api.get, `/datasai/${action.payload.gender}`);
+    const { data } = yield call(api.get, `/gender/${action.payload.gender}`);
     if (data.length === 0) {
       const error = "Sem resultados!";
       throw error;
@@ -170,7 +170,7 @@ export function* searchImmigrantsByGender(action) {
 
 export function* searchImmigrantsByBirth(action) {
   try {
-    const { data } = yield call(api.get, `/datasai/${action.payload.birth}`);
+    const { data } = yield call(api.get, `/datanasc/${action.payload.birth}`);
     if (data.length === 0) {
       const error = "Sem resultados!";
       throw error;

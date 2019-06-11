@@ -90,6 +90,7 @@ class AdvancedSearch extends Component {
       this.props.searchByBirthRequest(this.state.birthInput);
     }
   };
+  
 
   handleSubmitNameCountry = e => {
     e.preventDefault();
@@ -166,7 +167,7 @@ class AdvancedSearch extends Component {
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="seventh">
-                    Pela idade
+                    Pela data de nascimento
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
