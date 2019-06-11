@@ -67,6 +67,12 @@ const rows = [
     label: "Nome Completo"
   },
   {
+    id: "genero",
+    numeric: true,
+    disablePadding: false,
+    label: "Gênero"
+  },
+  {
     id: "passaporte",
     numeric: true,
     disablePadding: false,
@@ -77,6 +83,12 @@ const rows = [
     numeric: true,
     disablePadding: false,
     label: "País de Origem"
+  },
+  {
+    id: "datanascimento",
+    numeric: true,
+    disablePadding: false,
+    label: "Data de Nascimento"
   },
   {
     id: "dataEntrada",
@@ -309,7 +321,13 @@ class EnhancedTable extends React.Component {
                           {n.passaporte}
                         </StyledTableCell>
                         <StyledTableCell align="right">
+                          {n.genero}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
                           {n.pais}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {n.datanascimento}
                         </StyledTableCell>
                         <StyledTableCell align="right">
                           {n.dataentrada}
