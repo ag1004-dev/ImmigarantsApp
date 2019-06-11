@@ -6,7 +6,6 @@ import "./styles.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Creators as ModalActions } from "../../store/ducks/modal";
-import { Button, Container} from "react-bootstrap";
 
 import "./styles.css";
 
@@ -28,19 +27,18 @@ class ModalImm extends Component {
         className="modal-container"
         overlayClassName="modal-overlay"
       >
-        <Container>
-          </Container>
-          <p className='close' onClick={this.handleHideModal}>x</p>
-          <h1>Dados do Imigrante:</h1>
-          <p><span>Nome:</span>   {modal.immigrant.nome}</p>
-          <p><span>Data de Nascimento:</span>   {modal.immigrant.datanascimento}</p>
-          <p><span>País de origem:   </span> {modal.immigrant.pais}</p>
-          <p><span>Passaporte:   </span> {modal.immigrant.passaporte}</p>
-          <p><span>Nome do pai:   </span>{modal.immigrant.nomepai}</p>
-          <p><span>Nome da mãe:   </span>{modal.immigrant.nomemae}</p>
-          <p><span>Data de Entrada:   </span>{modal.immigrant.dataentrada}</p>
-          <p><span>Data de saída:   </span>{modal.immigrant.datasaida}</p>
-        {/* </Container> */}
+        <p className="close" onClick={this.handleHideModal}>
+          x
+        </p>
+        <h1>Dados do Imigrante:</h1>
+        <p>Nome: {modal.immigrant.nome}</p>
+        <p>Data de Nascimento: {modal.immigrant.datanascimento}</p>
+        <p>País de Origem: {modal.immigrant.pais}</p>
+        <p>Passaporte: {modal.immigrant.passaporte}</p>
+        <p>Nome do Pai: {modal.immigrant.nomepai}</p>
+        <p>Nome da Mãe: {modal.immigrant.nomemae}</p>
+        <p>Data de Entrada: {modal.immigrant.dataentrada}</p>
+        <p>Data de Saída: {modal.immigrant.datasaida}</p>
       </Modal>
     );
   }
