@@ -58,6 +58,13 @@ public class ImmigrantController {
         return immigrantRepository.findByDatasaida(fetch);
     }
 
+    @GetMapping("/datanasc/{day}/{month}/{year}")
+    public List<Immigrant> getImmigrantsByDatanascimento(@PathVariable String day, @PathVariable String month,
+            @PathVariable String year) {
+        String fetch = day + '/' + month + '/' + year;
+        return immigrantRepository.findByDatanascimento(fetch);
+    }
+
     @GetMapping("/immigrants")
     public List<Immigrant> getImmigrants() {
         return immigrantRepository.findAll();

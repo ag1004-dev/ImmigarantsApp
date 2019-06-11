@@ -9,14 +9,13 @@ import java.util.List;
 
 @Repository
 public interface ImmigrantRepository extends JpaRepository<Immigrant, Long> {
-  @Query(value="SELECT * FROM Immigrant u",  nativeQuery = true)
-  List<Immigrant> age();
 
   List<Immigrant> findByNomeContaining(String nome);
   Immigrant findByPassaporte(String passaporte);
   List<Immigrant> findByNomeContainingAndPais(String nome, String pais);
   List<Immigrant> findByDataentrada(String dataentrada);
   List<Immigrant> findByDatasaida(String datasaida);
+  List<Immigrant> findByDatanascimento(String datanascimento);
   List<Immigrant> findByPais(String pais);
   List<Immigrant> findByGenero(String genero);
 }
