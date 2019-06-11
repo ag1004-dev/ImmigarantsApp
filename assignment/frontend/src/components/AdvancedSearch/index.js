@@ -20,7 +20,9 @@ class AdvancedSearch extends Component {
     countryInput: "",
     passInput: "",
     dateInput: "",
-    exitInput: ""
+    exitInput: "",
+    genderInput: "",
+    ageInput: "",
   };
 
   handleSubmitByName = e => {
@@ -59,6 +61,33 @@ class AdvancedSearch extends Component {
     } else {
       this.props.clearImmigrantData();
       this.props.searchByExitRequest(this.state.exitInput);
+    }
+    
+  }
+
+  handleSubmitGender = e => {
+    e.preventDefault();
+    if (this.state.genderInput === "") {
+      toast.error("Preencha os campos!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000
+      });
+    } else {
+      this.props.clearImmigrantData();
+      this.props.searchByGenderRequest(this.state.genderInput);
+    }
+  };
+
+  handleSubmitAge = e => {
+    e.preventDefault();
+    if (this.state.ageInput === "") {
+      toast.error("Preencha os campos!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000
+      });
+    } else {
+      this.props.clearImmigrantData();
+      this.props.searchByAgeRequest(this.state.ageInput);
     }
   };
 
@@ -129,6 +158,16 @@ class AdvancedSearch extends Component {
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="fifth">Pela data de saída</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="sixth">
+                    Pelo gênero
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="seventh">
+                    Pela idade
+                  </Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>
@@ -209,7 +248,7 @@ class AdvancedSearch extends Component {
                 </Tab.Pane>
                 <Tab.Pane
                   eventKey="fifth"
-                  className="d-flex align-items-center justify-content-center"
+                  // className="d-flex align-items-center justify-content-center"
                 >
                   <InputGroup className="mt-5">
                     <FormControl
@@ -225,6 +264,54 @@ class AdvancedSearch extends Component {
                         variant="outline-primary"
                         type="submit"
                         onClick={e => this.handleSubmitExit(e)}
+                      >
+                        Buscar
+                      </Button>
+                    </InputGroup.Append>
+                  </InputGroup>
+                </Tab.Pane>
+                <Tab.Pane
+                  eventKey="sixth"
+                  // className="d-flex align-items-center justify-content-center"
+                >
+                  <InputGroup className="mt-5">
+                    <FormControl
+                      placeholder="Gênero (masculino ou feminino)"
+                      aria-label="Gênero"
+                      aria-describedby="basic-addon2"
+                      onChange={e =>
+                        this.setState({ genderInput: e.target.value })
+                      }
+                    />
+                    <InputGroup.Append>
+                      <Button
+                        variant="outline-primary"
+                        type="submit"
+                        onClick={e => this.handleSubmitGender(e)}
+                      >
+                        Buscar
+                      </Button>
+                    </InputGroup.Append>
+                  </InputGroup>
+                </Tab.Pane>
+                <Tab.Pane
+                  eventKey="seventh"
+                  className="d-flex align-items-center justify-content-center"
+                >
+                  <InputGroup className="mt-5">
+                    <FormControl
+                      placeholder="Idade"
+                      aria-label="Idade"
+                      aria-describedby="basic-addon2"
+                      onChange={e =>
+                        this.setState({ ageInput: e.target.value })
+                      }
+                    />
+                    <InputGroup.Append>
+                      <Button
+                        variant="outline-primary"
+                        type="submit"
+                        onClick={e => this.handleSubmitAge(e)}
                       >
                         Buscar
                       </Button>
