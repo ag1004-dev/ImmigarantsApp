@@ -8,6 +8,8 @@ export const Types = {
   SEARCHBYPK_REQUEST: "immigrant/SEARCHBYPK_REQUEST",
   SEARCHBYENTRANCE_REQUEST: "immigrant/SEARCHBYENTRANCE_REQUEST",
   SEARCHBYEXIT_REQUEST: "immigrant/SEARCHBYEXIT_REQUEST",
+  SEARCHBYGENDER_REQUEST: "immigrant/SEARCHBYGENDER_REQUEST",
+  SEARCHBYBIRTH_REQUEST: "immigrant/SEARCHBYBIRTH_REQUEST",
   ADD_SUCCESS: "immigrant/ADD_SUCCESS",
   ADD_FAILURE: "immigrant/ADD_FAILURE",
   CLEAR_DATA: "immigrant/CLEAR_DATA"
@@ -42,6 +44,12 @@ export default function immigrants(state = INITIAL_STATE, action) {
 
     case Types.SEARCHBYEXIT_REQUEST:
       return { ...state };
+
+    case Types.SEARCHBYGENDER_REQUEST:
+      return{ ...state};
+    
+    case Types.SEARCHBYBIRTH_REQUEST:
+      return{ ...state};
 
     case Types.ADD_SUCCESS:
       return { ...state, error: null, data: [action.payload.data] };
@@ -85,6 +93,16 @@ export const Creators = {
   searchByExitRequest: exit => ({
     type: Types.SEARCHBYEXIT_REQUEST,
     payload: { exit }
+  }),
+
+  searchByGenderRequest: gender => ({
+    type: Types.SEARCHBYBIRTH_REQUEST,
+    payload: { gender }
+  }),
+
+  searchByBirthRequest: birth => ({
+    type: Types.SEARCHBYBIRTH_REQUEST,
+    payload: { birth }
   }),
 
   getImmigrants: () => ({

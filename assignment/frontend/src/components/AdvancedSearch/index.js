@@ -22,7 +22,7 @@ class AdvancedSearch extends Component {
     dateInput: "",
     exitInput: "",
     genderInput: "",
-    ageInput: "",
+    birthInput: "",
   };
 
   handleSubmitByName = e => {
@@ -78,16 +78,16 @@ class AdvancedSearch extends Component {
     }
   };
 
-  handleSubmitAge = e => {
+  handleSubmitBirth = e => {
     e.preventDefault();
-    if (this.state.ageInput === "") {
+    if (this.state.birthInput === "") {
       toast.error("Preencha os campos!", {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 2000
       });
     } else {
       this.props.clearImmigrantData();
-      this.props.searchByAgeRequest(this.state.ageInput);
+      this.props.searchByBirthRequest(this.state.birthInput);
     }
   };
 
@@ -304,14 +304,14 @@ class AdvancedSearch extends Component {
                       aria-label="Idade"
                       aria-describedby="basic-addon2"
                       onChange={e =>
-                        this.setState({ ageInput: e.target.value })
+                        this.setState({ birthInput: e.target.value })
                       }
                     />
                     <InputGroup.Append>
                       <Button
                         variant="outline-primary"
                         type="submit"
-                        onClick={e => this.handleSubmitAge(e)}
+                        onClick={e => this.handleSubmitBirth(e)}
                       >
                         Buscar
                       </Button>
