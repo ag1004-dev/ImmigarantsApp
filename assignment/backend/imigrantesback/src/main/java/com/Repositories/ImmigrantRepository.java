@@ -9,9 +9,8 @@ import java.util.List;
 
 @Repository
 public interface ImmigrantRepository extends JpaRepository<Immigrant, Long> {
-
-  @Query("SELECT * FROM immigrant WHERE 'FLOOR(DATEDIFF(NOW(), datanascimento) / 365' = idade")
-  List<Immigrant> findByIdade(String idade);
+  @Query(value="SELECT * FROM Immigrant u",  nativeQuery = true)
+  List<Immigrant> age();
 
   List<Immigrant> findByNomeContaining(String nome);
   Immigrant findByPassaporte(String passaporte);

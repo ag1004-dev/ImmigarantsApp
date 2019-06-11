@@ -29,11 +29,6 @@ public class ImmigrantController {
           return immigrantRepository.findByGenero(genero);
       }
 
-      @GetMapping("/idade/{idade}")
-      public List<Immigrant> getImmigrantsByAge(@PathVariable String idade) {
-        return immigrantRepository.findByIdade(idade);
-       }
-
      @GetMapping("/pais/{pais}")
      public List<Immigrant> getImmigrantsByCountry(@PathVariable String pais) {
           return immigrantRepository.findByPais(pais);
