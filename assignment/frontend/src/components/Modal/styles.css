@@ -2,9 +2,9 @@
   padding: 15px;
   border-radius: 5px;
   background-color: #fff;
-  width: 50%;
-  height: 55%;
-  text-align: center;
+  width: 40%;
+  height: 65%;
+  text-align: left;
   display: flex;
   flex-direction: column;
 }
@@ -13,6 +13,7 @@
   display: flex;
   float: right;
   cursor: pointer;
+  width: 50px;
 }
 
 .modal-overlay {
@@ -27,11 +28,15 @@
   justify-content: center;
 }
 
-.modal-container h2 {
+.modal-container h1 {
   text-align: center;
   padding: 0;
   margin: 0;
-  font-size: 18px;
+  font-size: 40px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+span{
+ font-weight: bold; 
 }
