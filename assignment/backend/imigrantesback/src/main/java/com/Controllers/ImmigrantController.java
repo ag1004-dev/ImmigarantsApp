@@ -24,7 +24,7 @@ public class ImmigrantController {
          return immigrantRepository.findByNomeContaining(name);
      }
 
-     @GetMapping("/gender/{genero}")
+     @GetMapping("/{genero}")
      public List<Immigrant> getImmigrantsByGender(@PathVariable String genero) {
           return immigrantRepository.findByGenero(genero);
       }
