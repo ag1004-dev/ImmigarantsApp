@@ -33,6 +33,7 @@ class ModalImm extends Component {
         <p className='close' onClick={this.handleHideModal}>x</p>
         <h1>Dados do Imigrante:</h1>
         <p><span>Nome:</span>   {modal.immigrant.nome}</p>
+        <p><span>Gênero:</span> {modal.immigrant.genero}</p>
         <p><span>Data de Nascimento:</span>   {modal.immigrant.datanascimento}</p>
         <p><span>País de origem:   </span> {modal.immigrant.pais}</p>
         <p><span>Passaporte:   </span> {modal.immigrant.passaporte}</p>

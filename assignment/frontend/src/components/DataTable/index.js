@@ -318,10 +318,10 @@ class EnhancedTable extends React.Component {
                           {n.nome}
                         </StyledTableCell>
                         <StyledTableCell align="right">
-                          {n.passaporte}
+                          {n.genero}
                         </StyledTableCell>
                         <StyledTableCell align="right">
-                          {n.genero}
+                          {n.passaporte}
                         </StyledTableCell>
                         <StyledTableCell align="right">
                           {n.pais}
