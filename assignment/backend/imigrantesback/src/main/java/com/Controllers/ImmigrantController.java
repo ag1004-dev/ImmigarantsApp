@@ -24,6 +24,16 @@ public class ImmigrantController {
          return immigrantRepository.findByNomeContaining(name);
      }
 
+     @GetMapping("/gender/{genero}")
+     public List<Immigrant> getImmigrantsByGender(@PathVariable String genero) {
+          return immigrantRepository.findByGenero(genero);
+      }
+
+      @GetMapping("/idade/{idade}")
+      public List<Immigrant> getImmigrantsByAge(@PathVariable String idade) {
+        return immigrantRepository.findByIdade(idade);
+       }
+
      @GetMapping("/pais/{pais}")
      public List<Immigrant> getImmigrantsByCountry(@PathVariable String pais) {
           return immigrantRepository.findByPais(pais);
@@ -40,7 +50,7 @@ public class ImmigrantController {
     }
 
     @GetMapping("/dataent/{day}/{month}/{year}")
-    public List<Immigrant> getImmigrantsByDataentrada(@PathVariable String day, @PathVariable String month, 
+    public List<Immigrant> getImmigrantsByDataentrada(@PathVariable String day, @PathVariable String month,
             @PathVariable String year) {
         String fetch = day + '/' + month + '/' + year;
         return immigrantRepository.findByDataentrada(fetch);
