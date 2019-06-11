@@ -96,7 +96,7 @@ export const Creators = {
   }),
 
   searchByGenderRequest: gender => ({
-    type: Types.SEARCHBYBIRTH_REQUEST,
+    type: Types.SEARCHBYGENDER_REQUEST,
     payload: { gender }
   }),
 

@@ -146,3 +146,45 @@ export function* searchImmigrantsByExit(action) {
     yield put(ImmigrantActions.searchImmigrantFailure(error));
   }
 }
+
+export function* searchImmigrantsByGender(action) {
+  try {
+    const { data } = yield call(api.get, `/datasai/${action.payload.gender}`);
+    if (data.length === 0) {
+      const error = "Sem resultados!";
+      throw error;
+    }
+    toast.success("Sucesso!", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
+    yield put(ImmigrantActions.searchImmigrantSuccess(data));
+  } catch (error) {
+    toast.error(error, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
+    yield put(ImmigrantActions.searchImmigrantFailure(error));
+  }
+}
+
+export function* searchImmigrantsByBirth(action) {
+  try {
+    const { data } = yield call(api.get, `/datasai/${action.payload.birth}`);
+    if (data.length === 0) {
+      const error = "Sem resultados!";
+      throw error;
+    }
+    toast.success("Sucesso!", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
+    yield put(ImmigrantActions.searchImmigrantSuccess(data));
+  } catch (error) {
+    toast.error(error, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
+    yield put(ImmigrantActions.searchImmigrantFailure(error));
+  }
+}

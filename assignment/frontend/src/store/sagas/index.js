@@ -6,7 +6,9 @@ import {
   searchImmigrantByPK,
   searchImmigrantsByEntrance,
   searchImmigrantsByExit,
-  searchImmigrantByCountry
+  searchImmigrantByCountry,
+  searchImmigrantsByGender,
+  searchImmigrantsByBirth
 } from "./immigrants";
 import { Types as ImmigrantTypes } from "../ducks/immigrants";
 
@@ -21,6 +23,9 @@ export default function* rootSaga() {
       ImmigrantTypes.SEARCHBYENTRANCE_REQUEST,
       searchImmigrantsByEntrance
     ),
-    takeLatest(ImmigrantTypes.SEARCHBYEXIT_REQUEST, searchImmigrantsByExit)
+    takeLatest(ImmigrantTypes.SEARCHBYEXIT_REQUEST, searchImmigrantsByExit),
+    takeLatest(ImmigrantTypes.SEARCHBYGENDER_REQUEST, searchImmigrantsByGender),
+    takeLatest(ImmigrantTypes.SEARCHBYBIRTH_REQUEST, searchImmigrantsByBirth)
+
   ]);
 }
