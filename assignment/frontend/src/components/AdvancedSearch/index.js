@@ -273,9 +273,9 @@ class AdvancedSearch extends Component {
                 </Tab.Pane>
                 <Tab.Pane
                   eventKey="sixth"
-                  // className="d-flex align-items-center justify-content-center"
+                  className="mt-5"
                 >
-                  <InputGroup className="mt-5">
+                  {/* <InputGroup className="mt-5">
                     <FormControl
                       placeholder="Gênero (masculino ou feminino)"
                       aria-label="Gênero"
@@ -293,7 +293,31 @@ class AdvancedSearch extends Component {
                         Buscar
                       </Button>
                     </InputGroup.Append>
-                  </InputGroup>
+                  </InputGroup> */}
+                  <Button
+                    variant="outline-primary"
+                    type="submit"
+                    value="Masculino"
+                    size="lg"
+                    // onClick={e =>
+                    //     this.setState({ genderInput: e.target.value })}
+                    onClick={e => this.handleSubmitGender(e)}
+                  >
+                    Masculino
+                  </Button>
+                  <Button
+                    className="ml-5"
+                    variant="outline-danger"
+                    type="submit"
+                    value="Feminino"
+                    size="lg"
+                    onClick={e =>
+                      this.setState({ genderInput: e.target.value })}
+                    onClick={e => this.handleSubmitGender(e)}
+                  >
+                    Feminino
+                  </Button>
+
                 </Tab.Pane>
                 <Tab.Pane
                   eventKey="seventh"
@@ -301,8 +325,8 @@ class AdvancedSearch extends Component {
                 >
                   <InputGroup className="mt-5">
                     <FormControl
-                      placeholder="Idade"
-                      aria-label="Idade"
+                      placeholder="Data de Nascimento"
+                      aria-label="Data de Nascimento"
                       aria-describedby="basic-addon2"
                       onChange={e =>
                         this.setState({ birthInput: e.target.value })
