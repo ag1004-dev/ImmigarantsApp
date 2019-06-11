@@ -67,15 +67,8 @@ class AdvancedSearch extends Component {
 
   handleSubmitGender = e => {
     e.preventDefault();
-    if (this.state.genderInput === "") {
-      toast.error("Preencha os campos!", {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 2000
-      });
-    } else {
-      this.props.clearImmigrantData();
-      this.props.searchByGenderRequest(this.state.genderInput);
-    }
+    this.props.clearImmigrantData();
+    this.props.searchByGenderRequest(this.state.genderInput);
   };
 
   handleSubmitBirth = e => {
@@ -301,7 +294,11 @@ class AdvancedSearch extends Component {
                     size="lg"
                     // onClick={e =>
                     //     this.setState({ genderInput: e.target.value })}
-                    onClick={e => this.handleSubmitGender(e)}
+                    // onClick={e => this.handleSubmitGender(e.target.value)}
+                    onClick ={ (e) => {
+                      this.setState({ genderInput: e.target.value });
+                      this.handleSubmitGender(e);
+                      }}
                   >
                     Masculino
                   </Button>
@@ -311,9 +308,13 @@ class AdvancedSearch extends Component {
                     type="submit"
                     value="Feminino"
                     size="lg"
-                    onClick={e =>
-                      this.setState({ genderInput: e.target.value })}
-                    onClick={e => this.handleSubmitGender(e)}
+                    // onClick={e =>
+                    //   this.setState({ genderInput: e.target.value })}
+                    // onClick={e => this.handleSubmitGender(e.target.value)}
+                    onClick ={ (e) => {
+                      this.setState({ genderInput: e.target.value });
+                      this.handleSubmitGender(e);
+                    }}
                   >
                     Feminino
                   </Button>
